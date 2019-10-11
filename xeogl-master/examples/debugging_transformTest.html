@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+<body>
+
+<div id="info">
+    <a href="http://xeogl.org" target="_parent">xeogl</a>
+    <br><br>
+    <ul>
+        <li>
+            <!--using the <a href="js/debug/debug.js" target="_parent">debug</a> helper utility to visualize the result of-->
+            <!--the <a href="../docs/classes/xeogl.math.math.html#method_transformPoint4">xeogl.math.rayTriangleIntersect</a> function-->
+        </li>
+    </ul>
+
+</div>
+
+<script>
+
+    var positions = [
+        [2.0, 2.0, 2.0],
+        [2.0, -2.0, 2.0],
+        [-2.0, -2.0, 2.0],
+        [-2.0, 2.0, 2.0],
+        [2.0, 2.0, -2.0],
+        [2.0, -2.0, -2.0],
+        [-2.0, -2.0, -2.0],
+        [-2.0, 2.0, -2.0]
+    ];
+
+    var positions2 = [];
+
+    var angle = 0;
+
+    var axis = [0.3, 0.3, 0.3];
+
+    var matrix = xeogl.math.mat4();
+
+    var mesh = new xeogl.Mesh({
+        geometry: new xeogl.Geometry({
+            primitive: "lines",
+            positions: xeogl.math.flatten(positions),
+            indices: [
+                0, 1, 1, 2, 2, 3, 3, 0, 4,
+                5, 5, 6, 6, 7, 7, 4, 0, 4,
+                1, 5, 2, 6, 3, 7
+            ]
+        }),
+        material: new xeogl.PhongMaterial({
+            emissive: [0.6, 0.9, 0.6],
+            diffuse: [0, 0, 0],
+            specular: [0, 0, 0],
+            lineWidth: 4
+        })
+    });
+
+    var boundary = new xeogl.Mesh({
+        geometry: new xeogl.AABBGeometry(),
+        material: new xeogl.PhongMaterial({
+            emissive: [0.9, 0.6, 0.6],
+            diffuse: [0, 0, 0],
+            specular: [0, 0, 0],
+            lineWidth: 2
+        })
+    });
+
+    mesh.scene.on("tick",
+            function () {
+                update();
+            });
+
+
+    //  setInterval(update, 100);
+
+    function update() {
+
+        var scale = xeogl.math.scalingMat4v([0.5, 0.3, 0.3]);
+        var translate = xeogl.math.translationMat4v([-2, 0, 0]);
+        var rotate = xeogl.math.rotationMat4v(angle, axis);
+
+        var matrix = xeogl.math.mat4();
+
+        xeogl.math.identityMat4(matrix);
+
+        xeogl.math.mulMat4(matrix, rotate, matrix);
+        xeogl.math.mulMat4(matrix, translate, matrix);
+
+        xeogl.math.mulMat4(matrix, scale, matrix);
+
+        xeogl.math.transformPoints3(matrix, positions, positions2);
+
+        var aabb = xeogl.math.points3ToAABB3(positions2);
+
+        boundary.geometry.aabb = aabb;
+
+        mesh.geometry.positions = xeogl.math.flatten(positions2);
+
+        angle += 0.01;
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+    <script src="../build/xeogl.js"></script>
+
+<body>
+
+<div id="info">
+    <h1><a href="../docs/classes/BoxGeometry.html" target="_parent">BoxGeometry</a></h1>
+</div>
+
+<script>
+
+    var mesh = new xeogl.Mesh({
+        geometry: new xeogl.BoxGeometry({
+            xSize: 1,
+            ySize: 1,
+            zSize: 1
+        }),
+        material: new xeogl.PhongMaterial({
+            ambient: [0.3, 0.3, 0.3],
+            shininess: 30,
+            diffuseMap: new xeogl.Texture({
+                src: "textures/diffuse/uvGrid2.jpg"
+            }),
+            pointSize: 5
+        })
+    });
+
+    var camera = mesh.scene.camera;
+    camera.zoom(-5);
+
+    mesh.scene.on("tick", function () {
+        camera.orbitYaw(0.6);
+        camera.orbitPitch(0.3);
+    });
+
+</script>
+</body>
+</html>

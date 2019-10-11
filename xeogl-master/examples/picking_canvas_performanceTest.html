@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+<body>
+
+<div id="info">
+    <h1>raycasting 1000 <a href="../docs/classes/Mesh.html" target="_parent">Meshes</a> to find intersection
+        position, UV and normal</h1>
+    <br>
+    <img id="diffuseTexture" src="textures/diffuse/uvGrid2.jpg" width="400px" height="400px">
+
+    <div id="uvPos"
+         style="position:absolute; width: 20px; height: 20px; border-radius: 10px; opacity: 0.7; border: 2px solid white; background: lightgreen;"></div>
+
+</div>
+
+<script>
+
+    var showWorldPos = (function () {
+        var pointHelper = new xeogl.Mesh({
+            geometry: new xeogl.SphereGeometry({
+                radius: 0.1
+            }),
+            material: new xeogl.PhongMaterial({
+                diffuse: [0.6, 1.0, 0.6],
+                emissive: [0.3, 0.6, 0.3]
+            }),
+            position: [0, 0, 0],
+            pickable: false
+        });
+        return function (worldPos, normal) { // TODO: show fragment normal vector
+            pointHelper.position = worldPos;
+        };
+    })();
+
+    var showUVPos = (function () {
+        var textureImg = document.getElementById("diffuseTexture");
+        var uvPosDiv = document.getElementById("uvPos");
+        var left = textureImg.offsetLeft;
+        var top = textureImg.offsetTop;
+        var width = textureImg.width;
+        var height = textureImg.height;
+        return function (uv) {
+            if (!uv) {
+                uvPosDiv.style.left = -100 + "px";
+                return;
+            }
+            uvPosDiv.style.left = Math.floor(left + uv[0] * width) + "px";
+            uvPosDiv.style.top = Math.floor(top + (uv[1] * height)) + "px"; // Correct for our texture Y-flipping
+        }
+    })();
+
+    var geometry = new xeogl.SphereGeometry({
+        radius: 1.0,
+        heightSegments: 40,
+        widthSegments: 40,
+        combined: true,
+        quantized: true
+    });
+
+    var material = new xeogl.PhongMaterial({
+        diffuseMap: new xeogl.Texture({
+            src: "textures/diffuse/uvGrid2.jpg"
+        })
+    });
+
+    var width = 40;
+    var halfWidth = width / 2;
+
+    for (var i = 0; i < 1000; i++) {
+        new xeogl.Mesh({
+            geometry: geometry,
+            material: material,
+            position: [
+                Math.random() * width - halfWidth,
+                Math.random() * width - halfWidth,
+                Math.random() * width - halfWidth
+            ]
+        });
+    }
+
+    var scene = xeogl.getDefaultScene();
+
+    scene.camera.zoom(20);
+    scene.camera.orbitYaw(45);
+    scene.camera.orbitPitch(45);
+
+    var lastCoords;
+
+    scene.input.on("mousemove", function (coords) {
+        pick(coords);
+        lastCoords = coords;
+    });
+
+    function pick(coords) {
+
+        showUVPos(null);
+
+        var hit = scene.pick({
+            canvasPos: coords,
+            pickSurface: true
+        });
+
+        scene._renderer.imageDirty();
+
+        if (hit) {
+
+            if (hit.worldPos) {
+                showWorldPos(hit.worldPos, hit.normal);
+            }
+
+            if (hit.uv) {
+                showUVPos(hit.uv);
+            }
+
+        } else {
+
+            // No Triangle picked
+        }
+    }
+
+    new xeogl.CameraControl(); // Camera interaction only, picking not used
+
+</script>
+</body>
+</html>

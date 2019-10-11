@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+    <link href="css/styles.css" rel="stylesheet"/>
+
+<body>
+
+<div id="info">
+    <h1><a href="../docs/classes/Scene.html" target="_parent">Scene</a> "tick" events</h1>
+    <pre id="log"></pre>
+</div>
+
+<script>
+
+    var mesh = new xeogl.Mesh();
+
+    mesh.scene.camera.eye = [0, 0, -5];
+
+    mesh.scene.on("tick",
+            function (params) {
+
+                mesh.scene.camera.orbitYaw(0.5);
+                mesh.scene.camera.orbitPitch(0.3);
+
+                log("tick", params);
+                ;
+            });
+
+
+    // Orbit the eye position about the look position.
+    mesh.scene.on("tick", function () {
+        mesh.scene.camera.orbitYaw(-0.1);
+    });
+
+    var buf = [];
+
+    function log(event, params) {
+
+        buf.push(event + ": " + JSON.stringify(params));
+
+        if (buf.length > 30) {
+            buf.shift();
+        }
+
+        document.getElementById("log").innerText = buf.join("\n");
+    }
+
+</script>
+</body>
+</html>

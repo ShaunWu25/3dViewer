@@ -1,0 +1,1 @@
+This directory contains assets (eg. images) that are used in the API documentation pages generated in ../docs

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+    <script src="js/geometry/vectorTextGeometry.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+<body>
+
+<div id="info">
+    <h1><a href="../docs/classes/VectorTextGeometry.html" target="_parent">VectorTextGeometry</a> showing the sourcecode
+        for
+        this example</h1>
+</div>
+
+<script id="source">
+
+    var mesh = new xeogl.Mesh({
+        geometry: new xeogl.VectorTextGeometry({
+            text: document.getElementById("source").innerText,
+            size: 2
+        }),
+        material: new xeogl.PhongMaterial({
+            emissive: [0.4, 0.8, 0.4],
+            lineWidth: 2
+        }),
+        position: [-40, 30, 0]
+    });
+
+    mesh.scene.camera.zoom(90);
+
+    new xeogl.CameraControl();
+
+</script>
+</body>
+</html>

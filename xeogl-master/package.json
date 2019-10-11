@@ -1,0 +1,59 @@
+{
+  "name": "xeogl",
+  "title": "xeogl",
+  "version": "0.9.0",
+  "description": "WebGL-based 3D visualization library",
+  "main": "build/xeogl.js",
+  "module": "build/xeogl.module.js",
+  "jsnext:main": "build/xeogl.module.js",
+  "files": [
+    "package.json",
+    "LICENSE",
+    "README.md",
+    "build/xeogl.js",
+    "build/xeogl.module.js",
+    "src",
+    "examples/js"
+  ],
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "homepage": "http://xeogl.org/",
+  "keywords": [
+    "xeogl",
+    "bim",
+    "cad",
+    "archviz",
+    "3d",
+    "webgl"
+  ],
+  "author": {
+    "name": "Lindsay Kay",
+    "email": "lindsay.kay@xeolabs.com"
+  },
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/xeolabs/xeogl/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/xeolabs/xeogl.git"
+  },
+  "scripts": {
+    "build": "gulp"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-yuidoc": "^0.1.2",
+    "rollup": "^0.55.5",
+    "rollup-plugin-license": "^0.7.0",
+    "rollup-plugin-uglify": "^5.0.2",
+    "rollup-watch": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=0.10.17",
+    "npm": "1.3.8"
+  }
+}

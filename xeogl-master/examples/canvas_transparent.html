@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+    <link href="css/styles.css" rel="stylesheet"/>
+
+    <style>
+        body {
+            background-image: url(textures/diffuse/UVCheckerMap11-1024.png);
+            background-size: 100%;
+            background-repeat: repeat;
+        }
+
+        canvas {
+            position:absolute;
+            width:100%;
+            height:100%;
+        }
+    </style>
+
+</head>
+<body>
+<div id="info">
+    <h1>transparent external <a href="../docs/classes/Canvas.html" target="_parent">Canvas</a> with background image</h1>
+</div>
+
+<canvas id="myCanvas" ></canvas>
+
+<script>
+
+    // Create the default scene ourselves so we can
+    // have a transparent canvas on it
+    var scene = new xeogl.Scene({
+        canvas: "myCanvas",
+        transparent: true
+    });
+
+    xeogl.setDefaultScene(scene);
+
+    // Torus mesh
+    new xeogl.Mesh({
+        geometry: new xeogl.TorusGeometry({
+            radius: 1.0,
+            tube: 0.3,
+            radialSegments: 32,
+            tubeSegments: 24,
+            arc: Math.PI * 2.0
+        }),
+        material: new xeogl.PhongMaterial({
+            ambient: [0.9, 0.3, 0.9],
+            shininess: 30,
+            diffuseMap: new xeogl.Texture({
+                src: "textures/diffuse/uvGrid2.jpg"
+            })
+        })
+    });
+
+    var camera = scene.camera;
+
+    camera.eye = [0, 0, -4];
+
+    // Orbit the camera
+    scene.on("tick", function () {
+        camera.orbitYaw(0.2);
+        camera.orbitPitch(0.1);
+    });
+
+    // Allow user interaction
+    new xeogl.CameraControl();
+
+</script>
+</body>
+</html>

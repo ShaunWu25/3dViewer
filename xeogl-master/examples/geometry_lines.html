@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+    <link href="css/styles.css" rel="stylesheet"/>
+
+<body>
+
+<div id="info">
+    <h1><a href="../docs/classes/Geometry.html" target="_parent">Geometry</a> line segments</h1>
+</div>
+
+<script>
+
+    var mesh = new xeogl.Mesh({
+
+        geometry: new xeogl.Geometry({
+
+            // Supported primitives are 'points', 'lines', 'line-loop', 'line-strip', 'triangles',
+            // 'triangle-strip' and 'triangle-fan'
+            primitive: "lines",
+
+            // Vertex positions for four line segments
+            positions: [
+                2.0, 2.0, 2.0, 2.0, -2.0, 2.0, // 0
+                -2.0, -2.0, 2.0, -2.0, 2.0, 2.0, // 1
+                2.0, 2.0, -2.0, 2.0, -2.0, -2.0, // 2
+                -2.0, -2.0, -2.0, -2.0, 2.0, -2.0 // 3
+            ],
+            indices: [
+                0,1,
+                0,3,
+                1,2,
+                2,3
+            ]
+        }),
+
+        material: new xeogl.PhongMaterial({
+            emissive: [1, 0, 0],
+            diffuse: [0,0,0],
+            lineWidth: 4
+        })
+    });
+
+    mesh.scene.on("tick", function () {
+        mesh.scene.camera.orbitYaw(0.6);
+        mesh.scene.camera.orbitPitch(0.3);
+    });
+
+</script>
+</body>
+</html>

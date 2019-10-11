@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+    <script src="js/models/glTFModel.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+<body>
+
+<div id="info">
+    <h1>custom stereo view</h1>
+</div>
+
+<script>
+
+    // Load glTF model
+    var gearbox = new xeogl.GLTFModel({
+        src: "models/gltf/GearboxAssy/glTF-MaterialsCommon/GearboxAssy.gltf"
+    });
+
+    var scene = gearbox.scene;
+    var camera = scene.camera;
+
+    camera.eye = [184.21, 10.54, -7.03];
+    camera.look = [159.20, 17.02, 3.21];
+    camera.up = [-0.15, 0.97, 0.13];
+
+    scene.on("tick", function () {
+        camera.orbitYaw(0.2);
+    });
+
+    // Configure Scene to render twice for each frame
+    scene.passes = 2;
+
+
+    camera.projection = "frustum";
+
+    var frustum = camera.frustum;
+
+    var viewport = scene.viewport;
+    viewport.autoBoundary = false;
+    var canvas = scene.canvas;
+
+    var canvasBoundary;
+
+    var eye;
+    var look;
+    var up;
+
+    var math = xeogl.math;
+    var eyeVec = math.vec3();
+    var sepVec = math.vec3();
+    var leftEye = math.vec3();
+    var leftLook = math.vec3();
+    var rightEye = math.vec3();
+    var rightLook = math.vec3();
+
+    var eyeSep = 0.2; // Eye separation
+    var focalLength = 20.0;
+    var aperture = 45;
+    var near = 0.1;
+    var DTOR = 0.0174532925;
+    var radians = DTOR * aperture / 2;
+    var wd2 = near * Math.tan(radians);
+    var ndfl = near / focalLength;
+
+
+    scene.on("rendering", function (e) {
+
+        canvasBoundary = canvas.boundary;
+
+        var canvasWidth = canvasBoundary[2];
+        var canvasHeight = canvasBoundary[3];
+        var halfCanvasWidth = Math.round(canvasWidth / 2);
+        var canvasAspectRatio = canvasWidth / canvasHeight;
+
+        switch (e.pass) {
+
+            case 0:
+
+                eye = camera.eye.slice();
+                look = camera.look.slice();
+                up = camera.up.slice();
+
+                math.subVec3(look, eye, eyeVec);
+                math.cross3Vec3(up, eyeVec, sepVec);
+                math.normalizeVec3(sepVec);
+                math.mulVec3Scalar(sepVec, eyeSep / 2.0);
+
+                // Find left and right viewpoints
+
+                math.subVec3(eye, sepVec, leftEye);
+                math.subVec3(look, sepVec, leftLook);
+
+                math.addVec3(eye, sepVec, rightEye);
+                math.addVec3(look, sepVec, rightLook);
+
+                // Set view transform to left side
+
+                camera.eye = leftEye;
+                camera.look = leftLook;
+
+                // Set projection frustum to left half of view space
+
+                frustum.left = -canvasAspectRatio * wd2 - 0.5 * eyeSep * ndfl;
+                frustum.right = canvasAspectRatio * wd2 - 0.5 * eyeSep * ndfl;
+                frustum.top = wd2 * 2;
+                frustum.bottom = -wd2 * 2;
+
+                // Set viewport to left half of canvas
+
+                viewport.boundary = [0, 0, halfCanvasWidth, canvasHeight];
+
+                break;
+
+            case 1:
+
+                // Set view transform to right side
+
+                camera.eye = rightEye;
+                camera.look = rightLook;
+
+                // Set projection frustum to left half of view space
+
+                frustum.left = -canvasAspectRatio * wd2 + 0.5 * eyeSep * ndfl;
+                frustum.right = canvasAspectRatio * wd2 + 0.5 * eyeSep * ndfl;
+                frustum.top = wd2 * 2;
+                frustum.bottom = -wd2 * 2;
+
+                // Set viewport to right half of canvas
+
+                viewport.boundary = [halfCanvasWidth, 0, halfCanvasWidth, canvasHeight];
+
+                break;
+        }
+    });
+
+    // Intercept Scene after each render
+    // After the second pass we'll restore the viewpoint
+
+    scene.on("rendered", function (e) {
+        switch (e.pass) {
+            case 1:
+                camera.eye = eye;
+                camera.look = look;
+                camera.up = up;
+                break;
+        }
+    });
+
+    new xeogl.CameraControl();
+
+</script>
+</body>
+</html>

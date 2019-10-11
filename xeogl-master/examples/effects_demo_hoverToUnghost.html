@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+    <script src="../build/xeogl.js"></script>
+    <script src="js/models/glTFModel.js"></script>
+
+
+<body>
+
+<div id="info">
+    <h1>
+        <ul>
+            <li><a href="../docs/classes/Object.html" target="_parent">Objects</a> in this
+                <a href="../docs/classes/GLTFModel.html" target="_parent">GLTFModel</a> are ghosted
+            </li>
+            <li>hover over an Object to unghost it
+            </li>
+            <li>click an Object to fly to it</li>
+            <li>shift-click an Object to select it</li>
+            <li>click nothing to fit everything in view</li>
+        </ul>
+    </h1>
+</div>
+
+<div id="dat-gui-container">
+</div>
+
+<script>
+
+    var model = new xeogl.GLTFModel({
+        id: "saw",
+        src: "models/gltf/ReciprocatingSaw/glTF-MaterialsCommon/ReciprocatingSaw.gltf",
+        rotation: [90, 0, 0],
+        edgeThreshold: 20,
+        ghosted: true
+    });
+
+
+    var scene = model.scene;
+    var camera = scene.camera;
+    var input = scene.input;
+
+    camera.eye = [-112.6245346069336, -31.463842391967773, 278.8330993652344];
+    camera.look = [-110.8940200805664, -44.85665512084961, -0.46092796325683594];
+    camera.up = [0.0002966552274301648, 0.9988529682159424, -0.04789572209119797];
+
+    var cameraControl = new xeogl.CameraControl({
+        doublePickFlyTo: false
+    });
+    var cameraFlight = new xeogl.CameraFlightAnimation();
+
+    cameraControl.on("hoverEnter", function (hit) {
+        hit.mesh.ghosted = false;
+    });
+
+    cameraControl.on("hoverOut", function (hit) {
+        hit.mesh.ghosted = true;
+    });
+
+    cameraControl.on("picked", function (hit) {
+        var mesh = hit.mesh;
+        if (input.keyDown[input.KEY_SHIFT]) {
+            hit.mesh.selected = !hit.mesh.selected;
+        } else {
+            cameraFlight.flyTo(mesh);
+        }
+    });
+
+    cameraControl.on("pickedNothing", function (hit) {
+        cameraFlight.flyTo(model);
+    });
+
+    scene.highlightMaterial.fillAlpha = 0.6;
+    scene.highlightMaterial.edgeAlpha = 0.6;
+    scene.highlightMaterial.edgeColor = [0, 0, 0];
+    scene.highlightMaterial.edgeWidth = 2;
+
+
+</script>
+</body>
+</html>

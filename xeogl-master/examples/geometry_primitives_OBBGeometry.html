@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+    <script src="../build/xeogl.js"></script>
+
+<body>
+
+<div id="info">
+    <h1><a href="../docs/classes/OBBGeometry.html" target="_parent">OBBGeometry</a></h1>
+</div>
+
+<script>
+
+    var mesh = new xeogl.Mesh({
+        geometry: new xeogl.TorusGeometry({
+            radius: 1.0,
+            tube: 0.3,
+            radialSegments: 32,
+            tubeSegments: 24,
+            arc: Math.PI * 2.0
+        }),
+        material: new xeogl.PhongMaterial({
+            ambient: [0.3, 0.3, 0.3],
+            shininess: 30,
+            diffuseMap: new xeogl.Texture({
+                src: "textures/diffuse/uvGrid2.jpg"
+            })
+        })
+    });
+
+    new xeogl.Mesh({
+        geometry: new xeogl.OBBGeometry({
+            targetOBB: mesh.obb
+        }),
+        material: new xeogl.PhongMaterial({
+            diffuse: [0.5, 1.0, 0.5],
+            emissive: [0.5, 1.0, 0.5],
+            lineWidth: 3
+        })
+    });
+
+    var camera = mesh.scene.camera;
+
+    camera.eye = [0, 0, -9];
+
+    mesh.scene.on("tick", function () {
+        camera.orbitYaw(0.6);
+        camera.orbitPitch(0.3);
+    });
+</script>
+</body>
+</html>

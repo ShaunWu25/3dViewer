@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+    <link href="css/styles.css" rel="stylesheet"/>
+
+<body>
+
+<div id="info">
+    <h1>profiling xeogl runtime performance</h1>
+    <pre id="log">
+    </pre>
+</div>
+
+<script>
+
+    var geometries = [
+        new xeogl.SphereGeometry({
+            radius: 2.7
+        }),
+        new xeogl.SphereGeometry({
+            radius: 4.4
+        }),
+        new xeogl.SphereGeometry({
+            radius: 5.1
+        }),
+        new xeogl.SphereGeometry({
+            radius: 6.8
+        })
+    ];
+
+    var gi = 0;
+    var sqrtNum = 20;
+    var diffuse = [0, 0, 0];
+    var specular = [0, 0, 0];
+    var inc = 1.0 / sqrtNum;
+    var width = 400;
+    var halfWidth = width / 2;
+
+    for (var y = 0; y <= 1.0; y += inc) {
+        for (var x = 0; x <= 1.0; x += inc) {
+            for (var z = 0; z <= 1.0; z += inc) {
+
+                new xeogl.Mesh({
+                    colorize: [x, z, y, 1],
+                    geometry: geometries[gi < 3 ? gi++ : gi = 0],
+                    material: new xeogl.LambertMaterial({
+                        diffuse: [x, z, y]
+                    }),
+                    position: [(x * width) - halfWidth, (y * width) - halfWidth, (z * width) - halfWidth]
+                });
+            }
+        }
+    }
+
+
+    var scene = xeogl.getDefaultScene();
+
+    scene.camera.zoom(670);
+
+    new xeogl.CameraControl();
+
+    // Spin camera
+    // Log statistics
+
+    scene.on("tick", function () {
+
+        // Spin camera
+
+        var camera = scene.camera;
+
+        camera.orbitYaw(0.5);
+        camera.orbitPitch(0.3);
+
+        // Get stats from xeogl and log them
+
+        var stats = xeogl.stats;
+
+        logJSON(stats);
+    });
+
+
+    function logJSON(json) {
+        json.client.browser = json.client.browser.substring(0, 10) + "...";
+        document.getElementById("log").innerHTML = "xeogl.stats = " + JSON.stringify(json, null, 4);
+    }
+
+</script>
+</body>
+</html>

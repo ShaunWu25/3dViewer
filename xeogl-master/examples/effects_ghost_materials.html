@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+    <script src="js/models/glTFModel.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+<body>
+
+<div id="info" class="dark">
+    <h1>ghost effect applied to a <a href="../docs/classes/GLTFModel.html" target="_parent">GLTFModel</a>, with two <a
+            href="../docs/classes/Mesh.html" target="_parent">Meshes</a> having custom <a
+            href="../docs/classes/EmphasisMaterial.html" target="_parent">EmphasisMaterials</a></h1>
+    <pre id="log">model:  adam head - [<a
+            href='https://github.com/xeolabs/xeogl/tree/master/examples/models/gltf/adamHead/README.md'
+            target="_parent">model info</a>]</pre>
+</div>
+
+<script>
+
+    var scene = xeogl.getDefaultScene();
+    var camera = scene.camera;
+
+    // Customize lights for default scene
+
+    scene.clearLights();
+
+    new xeogl.AmbientLight({
+        color: [.7, .9, 1.0],
+        intensity: 0.8
+    });
+
+    new xeogl.DirLight({
+        dir: [0.8, -0.6, -0.8],
+        color: [1.0, 1.0, 1.0],
+        intensity: 1.0,
+        space: "view"
+    });
+
+    new xeogl.DirLight({
+        dir: [-0.8, -0.4, -0.4],
+        color: [1.0, 1.0, 1.0],
+        intensity: 1.0,
+        space: "view"
+    });
+
+    new xeogl.DirLight({
+        dir: [0.2, -0.8, 0.8],
+        color: [0.6, 0.6, 0.6],
+        intensity: 1.0,
+        space: "view"
+    });
+
+    // Position camera
+
+    camera.eye = [3.16, 0.29, 5.47];
+    camera.look = [0, 0, 0.05];
+    camera.up = [-0.02, 0.99, -0.04];
+
+    // Load glTF model
+
+    var model = new xeogl.GLTFModel({
+        id: "adam",
+        src: "models/gltf/adamHead/adamHead.gltf",
+        edgeThreshold: 15,
+        handleNode: function (nodeInfo, actions) {
+            actions.createObject = {
+                id: "adam" + "#" + nodeInfo.name
+            };
+            return true;
+        }
+    });
+
+    // Customize the default ghost material
+
+    var ghostMaterial = scene.ghostMaterial;
+    ghostMaterial.edges = true;
+    ghostMaterial.edgeAlpha = 0.8;
+    ghostMaterial.edgeColor = [0.2, 0.2, 0.2];
+    ghostMaterial.edgeWidth = 1;
+    ghostMaterial.vertices = false;
+    ghostMaterial.vertexAlpha = 1.0;
+    ghostMaterial.vertexColor = [0.4, 1.0, 0.4];
+    ghostMaterial.vertexSize = 4;
+    ghostMaterial.fill = true;
+    ghostMaterial.fillColor = [0.4, 0.4, 0.4];
+    ghostMaterial.fillAlpha = 0.4;
+
+    model.on("loaded", function () {
+
+        // Switch whole model over to ghost view
+
+        model.ghosted = true;
+
+        // Customize ghost materials on a couple of objects
+
+        var maskObject = model.objects["adam#node_mesh_Adam_mask_-4108"];
+        var guardObject = model.objects["adam#node_Object001_-4112.2"];
+
+        maskObject.ghosted = false;
+
+        guardObject.ghosted = false;
+    });
+
+    // Handle user input
+
+    var cameraControl = new xeogl.CameraControl();
+
+    cameraControl.on("picked", function (e) {
+        console.log(e.mesh.id)
+    });
+
+</script>
+</body>
+</html>

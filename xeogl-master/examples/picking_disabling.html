@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+    <link href="css/styles.css" rel="stylesheet"/>
+
+<body>
+
+<div id="info">
+    <h1>Disabling picking for the red <a href="../docs/classes/Mesh.html" target="_parent">Meshes</a></h1>
+    <pre id="log"></pre>
+</div>
+
+<script>
+
+
+    // ------------ Logging -------------------------------------------------
+
+    var buf = [];
+
+    function log(event, params) {
+        var txt = event;
+        if (params) {
+            txt += ": " + JSON.stringify(params)
+        }
+        buf.push(txt);
+        if (buf.length > 30) {
+            buf.shift();
+        }
+        document.getElementById("log").innerText = buf.join("\n");
+    }
+
+
+    // ----------- Scene definition -----------------------------------------
+
+    // A hundred randomly-positions spheres - the green ones are
+    // pickable, while the red ones are not
+
+    var sphere = new xeogl.SphereGeometry({
+        radius: 2.0,
+        widthSegments: 32,
+        heightSegments: 24
+    });
+
+    for (var i = 0; i < 100; i++) {
+
+        var pickable = Math.random() < 0.5;
+
+        new xeogl.Mesh({
+
+            id: "mesh" + i,
+
+            geometry: sphere,
+
+            position: [
+                Math.random() * 50 - 25,
+                Math.random() * 50 - 25,
+                Math.random() * 50 - 25
+            ],
+
+            material: new xeogl.PhongMaterial({
+                specular: [1, 1, 1],
+                diffuse: pickable ? [0.3, 1.0, 0.3] : [1.0, 0.3, 0.3],
+                shininess: 3
+            }),
+
+            pickable: pickable
+        });
+    }
+
+    // Set initial camera position
+
+    var scene = xeogl.getDefaultScene();
+
+    scene.camera.zoom(60);
+
+
+    // ------------ Interaction ------------------------------------------
+
+    // Allow camera interaction
+
+    new xeogl.CameraControl();
+
+    // Attempt to pick a Mesh on each mouse click.
+    // Highlight each Mesh that we successfully pick.
+
+    var input = scene.input;
+
+    input.on("mouseclicked",
+            function (coords) {
+
+                log("clicked: (" + coords[0] + ", " + coords[1] + ")");
+
+                var hit = scene.pick({
+                    canvasPos: coords
+                });
+
+                if (hit) {
+                    log("picked Mesh '" + hit.mesh.id + "'");
+
+                    hit.mesh.material.emissive = [1, 1, 0];
+
+                } else {
+                    log("nothing picked.");
+                }
+
+
+                log();
+            });
+
+</script>
+</body>
+</html>

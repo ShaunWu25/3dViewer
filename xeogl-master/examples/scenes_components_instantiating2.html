@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+
+
+    <script src="../build/xeogl.js"></script>
+
+<body>
+
+<div id="info">
+  <h1>instantiating an <a href="../docs/classes/Mesh.html" target="_parent">Mesh</a> with child components given as
+    configuration objects</h1>
+</div>
+
+<script>
+
+    // Demonstrates how to specify a component's child components as configuration
+    // objects instead of component instances. This is handy when we want to build
+    // scenes declaratively.
+
+    // Note how we provide this Mesh with JavaScript configuration objects
+    // for its Geometry, Material and Transform child components, instead of
+    // supplying instances of those components.
+
+    // Note also that the Mesh will instantiate those components and internally
+    // manage their life cycles, automatically destroying them when they are replaced,
+    // or the Mesh itself is destroyed.
+
+    var mesh = new xeogl.Mesh({
+        geometry: {
+            type: "xeogl.TorusGeometry",
+            radius: 2.0,
+            tube:.6,
+            radialSegments: 32,
+            tubeSegments: 24,
+            arc: Math.PI * 2.0
+        },
+        material: {
+            type: "xeogl.MetallicMaterial",
+            metallic: 1.0,
+            roughness: 0.7,
+            baseColorMap: {
+                src: "textures/diffuse/uvGrid2.jpg"
+            },
+            frontface: "ccw" // Default
+        },
+        frontface: "ccw" // Default
+    });
+
+    // We can also attach child components as config objects, which get
+    // auto-destroyed by the Mesh in the same manner. We'll just replace
+    // the transform with one that rotates about a different axis.
+
+    mesh.transform = {
+        type: "xeogl.Rotate",
+        xyz: [1, 0, 0],
+        angle: 0
+    };
+
+    // Allow user camera control
+    new xeogl.CameraControl();
+
+    // Orbit the eye position about the look position.
+    mesh.scene.on("tick", function () {
+
+        var camera = mesh.scene.camera;
+
+        camera.orbitYaw(-0.15);
+        camera.orbitPitch(0.05);
+    });
+
+</script>
+</body>
+</html>

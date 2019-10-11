@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+    <script src="../build/xeogl.js"></script>
+
+    <script src="js/geometry/k3d.js"></script>
+    <script src="js/geometry/nintendo3DSGeometryLoader.js"></script>
+
+<body>
+
+<div id="info">
+    <h1><a href="../docs/classes/Nintendo3DSGeometry.html" target="_parent">Nintendo3DSGeometry</a> imported from a
+        Nintendo .3DS file</h1>
+</div>
+
+<script>
+
+    var scene = xeogl.getDefaultScene();
+
+    xeogl.load3DSGeometry(scene, "models/3ds/lexus.3ds", function (lexusGeometry) {
+
+        var mesh = new xeogl.Mesh({
+
+            geometry: lexusGeometry,
+
+            material: new xeogl.PhongMaterial({
+                emissive: [1, 1, 1],
+                emissiveMap: new xeogl.Texture({  // .3DS has no normals so relies on emissive illumination
+                    src: "models/3ds/lexus.jpg"
+                })
+            }),
+
+            rotation: [-90, 0, 0]
+        });
+
+        var cameraFlight = new xeogl.CameraFlightAnimation();
+        cameraFlight.jumpTo(mesh);
+
+        mesh.scene.camera.orbitPitch(20);
+        mesh.scene.camera.orbitYaw(130);
+
+        mesh.scene.on("tick", function () {
+            mesh.scene.camera.orbitYaw(-0.2);
+        });
+
+        new xeogl.CameraControl();
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link href="css/styles.css" rel="stylesheet"/>
+    <script src="../build/xeogl.js"></script>
+    <script src="js/geometry/teapotGeometry.js"></script>
+
+<body>
+
+<div id="info">
+    <h1>Outlining effect</h1>
+</div>
+
+<div id="dat-gui-container">
+</div>
+
+<script>
+
+    var mesh = new xeogl.Mesh({
+        geometry: new xeogl.TeapotGeometry(),
+        material: new xeogl.PhongMaterial({
+            ambient: [0.3, 0.3, 0.3],
+            shininess: 30
+        }),
+        rotation: [-90, 0, 0],
+        position: [0, -20, 0],
+        outlined: true,
+        outlineMaterial: new xeogl.OutlineMaterial({
+            width: 10,
+            color: [1, 0, 0]
+        })
+    });
+
+    var camera = mesh.scene.camera;
+
+    camera.eye = [0, 40, -80];
+
+    mesh.scene.on("tick", function () {
+        camera.orbitYaw(-0.2);
+    });
+
+    new xeogl.CameraControl();
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>xeogl - WebGL-based 3D visualization engine</title>
+    <meta name="author" content="xeolabs.com">
+    <meta property="og:url" content="http://www.xeogl.org"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="xeogl - WebGL-based 3D visualization engine"/>
+    <meta property="og:description"
+          content="A highly-optimized 3D visualization framework with an API that's fun to use"/>
+    <meta property="og:image" content="http://www.xeogl.org/assets/images/example1.png"/>
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Exo+2:400,800,900,700,600,500|Roboto:100,300,400,500,700,900'
+          rel='stylesheet' type='text/css'>
+
+    <!-- Plugins -->
+    <link href="assets/css/animations.css" rel="stylesheet">
+
+    <!-- Worthy core CSS file -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Custom css -->
+    <link href="assets/css/custom.css" rel="stylesheet">
+
+    <!-- Prettify -->
+    <link href="assets/css/prettify.css" rel="stylesheet"/>
+
+
+    <script src="assets/js/prettify.js"></script>
+
+</head>
+
+<body class="no-trans">
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=132893453432205";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- scrollToTop -->
+<!-- ================ -->
+<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+
+<!-- header start -->
+<!-- ================ -->
+
+<header class="header fixed clearfix navbar navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <!-- header-left start -->
+                <!-- ================ -->
+                <div class="header-left clearfix">
+
+                    <!--&lt;!&ndash; logo &ndash;&gt;-->
+                    <!--<div class="logo smooth-scroll">-->
+                    <!--<a href="#banner"><img id="logo" src="assets/images/mesh_logo.png" alt="xeogl"></a>-->
+                    <!--</div>-->
+
+                    <!-- name-and-slogan -->
+                    <div class="site-name-and-slogan smooth-scroll">
+                        <div class="site-name"><a href="#banner">xeogl</a></div>
+
+                        <div class="site-slogan">data-driven webgl from <a target="_parent" href="http://xeolabs.com">xeolabs</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- header-left end -->
+
+            </div>
+            <div class="col-md-8">
+
+                <!-- header-right start -->
+                <!-- ================ -->
+                <div class="header-right clearfix">
+
+                    <!-- main-navigation start -->
+                    <!-- ================ -->
+                    <div class="main-navigation animated">
+
+                        <!-- navbar start -->
+                        <!-- ================ -->
+                        <nav class="navbar navbar-default" role="navigation">
+                            <div class="container-fluid">
+
+                                <!-- Toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                            data-target="#navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="#introduction">Intro</a></li>
+                                        <!--<li><a href="#features">Features</a></li>-->
+                                        <li><a href="../examples" target="_parent">Examples</a></li>
+                                        <li><a href="../docs" target="_parent">Docs</a></li>
+                                        <li><a href="https://github.com/xeolabs/xeogl" target="_parent">GitHub</a></li>
+                                        <li>
+                                            <a href="https://github.com/xeolabs/xeogl/archive/master.zip">Download</a>
+                                        </li>
+                                        <li><a href="http://xeolabs.com">Contact</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </nav>
+                        <!-- navbar end -->
+
+                    </div>
+                    <!-- main-navigation end -->
+
+                </div>
+                <!-- header-right end -->
+
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header end -->
+
+<!-- banner start -->
+<!-- ================ -->
+<div id="banner" class="banner">
+    <div class="container">
+        <!--<div class="col-md-12">-->
+            <div class="row">
+                <div class="gal">
+                    <a href="../examples/#importing_gltf_OfficePlan"><img src="assets/images/office.png" alt="Archviz emphasis demo"></a>
+                    <a href="../examples/#importing_scenejs_tronTank"><img src="assets/images/tronTank.png" alt="Importing SceneJS content"></a>
+                    <a href="../examples/#materials_metallic_fireHydrant"><img src="assets/images/fireHydrant.jpg" alt="Physically-based rendering"></a>
+                    <a href="../examples/#importing_stl_gear"><img src="assets/images/gear.png" alt="Importing STL"></a>
+                    <a href="../examples/#featured_VanGoghRoom"><img src="assets/images/room.png" alt="Loading a glTF model from SketchFab"></a>
+                    <a href="../examples/#importing_gltf_Hoverbike"><img src="assets/images/hoverbike.png" alt="Loading a glTF model from SketchFab"></a>
+                    <a href="../examples/#effects_demo_hoverToHighlight"><img src="assets/images/drill.png" alt="Highlight emphasis demo"></a>
+                    <a href="../examples/#effects_demo_adam"><img src="assets/images/adam3.png" alt="Adam head glTF model"></a>
+                    <a href="../examples/#effects_ghost"><img src="assets/images/teapotWireframe.png" alt="Ghost emphasis effect"></a>
+                    <a href="../examples/#importing_gltf_BranchHouse"><img src="assets/images/branchHouse.png" alt="Branch house"></a>
+                    <a href="../examples/#effects_demo_gearbox"><img src="assets/images/gearboxGhosted.png" alt="Gearbox with ghosting and highlight"></a>
+                    <a href="../examples/#importing_gltf_Schependomlaan"><img src="assets/images/schependomlaan.png" alt="Loading an IFC model"></a>
+                    <a href="../examples/#effects_demo_sportscar"><img src="assets/images/adam6.jpg" alt="Adam head with emphasis effects"></a>
+                    <a href="../examples/#importing_gltf_Nerves"><img src="assets/images/nerves.png" alt="Archviz emphasis demo"></a>
+                    <a href="../examples/#featured_VianneyHouse2"><img src="assets/images/stairwell.png" alt="Archviz"></a>
+
+                    <!--<a href="../examples/#"><img src="assets/images/sceneDef2.png" alt="Defining an mesh in xeogl"></a>-->
+                    <!--<a href="../examples/#effects_demo_adam"><img src="assets/images/adam6.jpg" alt="Adam head with emphasis effects"></a>-->
+                    <!--<a href="http://www.bimsurfer.org"><img src="assets/images/bimsurfer.png" alt="Physically-based rendering"></a>-->
+                    <!--<a href="https://www.bimdata.io/"><img src="assets/images/bimdata.png" alt="Physically-based rendering"></a>-->
+                    <!--<a href="../examples/#featured_VianneyHouse2"><img src="assets/images/stairwell.png" alt="Archviz"></a>-->
+
+
+                    <!--<a href="../examples/#importing_gltf_OfficePlan"><img src="assets/images/sceneDef.png" alt="Archviz emphasis demo"></a>-->
+                    <!--<a href="../examples/#effects_demo_sportscar"><img src="assets/images/outlineGear.jpg" alt=""></a>-->
+                    <!--<a href=""><img src="assets/images/zspaceUser.png" alt=""></a>-->
+                    <!--<a href="../examples/#importing_gltf_OfficePlan"><img src="assets/images/sceneDef.png" alt="Archviz emphasis demo"></a>-->
+                    <!--<a href="../examples/#importing_gltf_OfficePlan"><img src="assets/images/sceneDef.png" alt="Archviz emphasis demo"></a>-->
+                    <!--<a href="../examples/#"><img src="assets/images/sceneDef2.png" alt=""></a>-->v
+                </div>
+
+            </div>
+        </div>
+    <!--</div>-->
+</div>
+<!-- banner end -->
+
+
+<!-- section start -->
+<!-- ================ -->
+<div class="section introduction clearfix object-non-visible" data-animation-effect="fadeIn">
+    <div class="container">
+        <div class="row">
+
+            <h1 id="introduction" class="title"><span>xeogl</span> introduction</h1>
+
+            <p>xeogl is an open source JavaScript library from <a target="_parent" href="http://xeolabs.com">xeolabs</a>
+                for 3D model visualization on WebGL.</p>
+
+            <p>It gives you tools to create interactive 3D worlds in your browser. Load models from formats like glTF or OBJ, or
+                generate them programmatically. Navigate them with the camera and script them with Javascript, to
+                build compelling 3D presentations.</p>
+
+            <h2>Features</h2>
+
+            <ul class="features">
+                <li><b>3D engine:</b>
+                    <ul>
+                        <li>Uses WebGL for rendering</li>
+                        <li>Component-based scene graph</li>
+                        <li>Written in ECMAScript 6</li>
+                        <li>No external dependencies; library and tool agnostic</li>
+                        <li class="last">Open source (<a
+                                href="https://github.com/xeolabs/xeogl/blob/master/MIT-LICENSE">MIT</a>).
+                    </ul>
+                </li>
+                <li><b>Designed for CAD, BIM and ArchViz:</b>
+                    <ul>
+                        <li class="first">Load multiple models</li>
+                        <li>Isolate/move/emphasize objects</li>
+                        <li>Camera navigation controls</li>
+                        <li>Camera animations (flyto, follow, path etc)</li>
+                        <li>Emphasis effects (wireframe, ghost, highlight, outline)</li>
+                        <li>Annotations</li>
+                        <li>Cross-section views</li>
+                        <li>Scene object hierarchies</li>
+                        <li>Transform hierarchies</li>
+                        <li>Bounding volumes</li>
+                        <li>3D picking, raycasting</li>
+                        <li>Screen capture</li>
+                    </ul>
+                </li>
+                <li><b>Imported formats:</b>
+                    <ul>
+                        <li class="first">glTF, STL, OBJ+MTL and SceneJS</li>
+                    </ul>
+                </li>
+                <li><b>Materials</b>
+                    <ul>
+                        <li class="first">PBR (metal/rough and specular/gloss)</li>
+                        <li class="last">Blinn/Phong and Lambert</li>
+                    </ul>
+                </li>
+                <li><b>Lighting</b>
+                    <ul>
+                        <li class="first">Image-based lighting</li>
+                        <li>Dynamic lights (directional, point and spot)</li>
+                        <li class="last">Realtime shadows</li>
+                    </ul>
+                </li>
+            </ul>
+            <p></p>
+
+
+            <h2>Creating a 3D scene</h2>
+
+            <p>To get started, first include <a
+                    href="https://github.com/xeolabs/xeogl/tree/master/build/">xeogl.js</a>
+                in your
+                HTML
+                page:</p>
+            <pre>&lt;script src="xeogl.js"&gt;&lt;/script&gt;</pre>
+            <br>
+
+            <p>Then define your 3D scene as a bunch of <a href="http://xeogl.org/docs/classes/Mesh.html" target="_parent">meshes</a>, as shown below. Each
+                mesh represents a WebGL draw call.</p>
+
+            <pre class="prettyprint lang-javascript">
+var geometry = new xeogl.TorusGeometry({
+    radius: 1.0,
+    tube: 0.3
+});
+
+var material = new xeogl.MetallicMaterial({
+    baseColorMap: new xeogl.Texture({
+        src: "textures/diffuse/uvGrid2.jpg"
+    }),
+    roughnessMap: new xeogl.Texture({
+        src: "textures/roughness/goldRoughness.jpg"
+    })
+});
+
+var mesh = new xeogl.Mesh({
+    geometry: geometry,
+    material: material,
+    position: [0, 0, 10]
+});</pre>
+            <br>
+            <p>Here's what we just created:</p>
+
+            <a href="http://xeogl.org/examples/#materials_metallic_torus"><img
+                    src="assets/images/example1.png"></a>
+
+            <a href="http://xeogl.org/examples/#importing_gltf_GearboxAssy"><img
+                    src="assets/images/conceptScene.png"></a>
+
+
+            <h2>Editing scenes</h2>
+
+            <p>You can dynamically edit most things in your scene at runtime.
+                <br><br>Lets scale and rotate our torus, then increase its size:</p>
+
+            <pre class="prettyprint lang-javascript">// Rotate and scale our torus mesh
+mesh.rotation= [0, 90, 0];
+mesh.scale = [1.2, 1.2, 1.2];
+
+// Increase the size
+mesh.scale = [1.5,  1.5, 1.5]; </pre>
+
+            <h2>Animating scenes</h2>
+
+            <p>Animate your scenes by updating the properties of their components:</p>
+
+            <pre class="prettyprint lang-javascript">// Update the rotation angle
+mesh.rotation = [0, 90, 0];</pre>
+            <br>
+
+            <p>Let's start our torus spinning:</p>
+            <pre class="prettyprint lang-javascript">mesh.scene.on("tick", function () {
+    mesh.rotateY(0.5);
+});</pre>
+
+            <h2>Loading models</h2>
+
+            <p>Load 3D models into your scene from glTF:</p>
+
+            <pre class="prettyprint lang-javascript">var model = new xeogl.GLTFModel({
+    id: "office",
+    src: "models/gltf/office/scene.gltf"
+});</pre>
+            <br>
+            <p>Then animate and navigate their meshes to create custom visualizations:</p>
+            <pre>
+model.on("loaded", function() {
+
+    // When model loaded, highlight its furniture meshes and fit to view
+
+    var meshIds = [
+        "office#79.0", "office#31.0", "office#105.0",
+        "office#8.0", "office#65.0", "office#65.0" //....
+    ];
+
+    for (var i = 0; i < meshIds.length; i++) {
+        var id = meshIds[i];
+        var mesh = model.meshes[id];
+
+        mesh.highlight = true;
+    }
+
+    var cameraFlight = new xeogl.CameraFlightAnimation();
+    cameraFlight.flyTo(model);
+});
+
+// Control camera with mouse and touch
+var cameraControl = new xeogl.CameraControl();</pre>
+            <br>
+            <p>Here's what we just created:</p>
+            <a href="http://xeogl.org/examples/#importing_gltf_OfficePlan"><img
+                    src="../assets/images/screenshots/officePlanHighlighted.png"></a>
+
+            <em>Model by <a href="https://sketchfab.com/scann3d" target="_parent">sketchfab.com/scann3d</a></em>
+
+
+            <!--<h2>xeogl in the wild</h2>-->
+
+            <!--<p>xeogl is the 3D engine within <a-->
+                    <!--href="http://xeolabs.com/articles/xeogl-in-bimsurfer">BIMSurfer v2</a>, the open source-->
+                <!--tool for Web-based visualization and evaluation of Building Information Models (BIM):</p>-->
+
+            <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/tCHwEA2HqU8?rel=0"-->
+                    <!--frameborder="0" allowfullscreen></iframe>-->
+
+            <!--<h2>Learn more</h2>-->
+
+            <!--<ul>-->
+                <!--<li><a-->
+                        <!--href="http://xeogl.org/docs" target="_parent">API docs</a></li>-->
+                <!--<li><a-->
+                        <!--href="http://xeogl.org/examples/#materials_fresnel_specular"-->
+                        <!--target="_parent">Examples</a>-->
+                <!--</li>-->
+                <!--<li><a-->
+                        <!--href="https://github.com/xeolabs/xeogl" target="_wiki">Source code</a></li>-->
+                <!--<li><a-->
+                        <!--href="https://github.com/xeolabs/xeogl/wiki" target="_wiki">Wiki</a></li>-->
+
+                <!--<li>Follow <a target="_parent" href="http://twitter.com/xeographics">@xeographics</a> on Twitter for-->
+                    <!--updates-->
+                <!--</li>-->
+            <!--</ul>-->
+
+
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- section end -->
+
+<!-- section start -->
+<!-- ================ -->
+<!--<div class="section features">-->
+<!--<div id="featureList" class="container object-non-visible" data-animation-effect="fadeIn">-->
+<!--<h1 id="features" class="title"><span>xeogl</span> Features</h1>-->
+
+<!--<div class="space"></div>-->
+
+<!--&lt;!&ndash; features get appended here by JS at the end of this page &ndash;&gt;-->
+
+<!--</div>-->
+<!--</div>-->
+<!-- section end -->
+
+
+<!-- footer start -->
+<!-- ================ -->
+<footer id="footer">
+
+    <!-- .footer start -->
+    <!-- ================ -->
+    <div class="footer section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <p class="lead"><a href="https://github.com/xeolabs/xeogl/archive/master.zip"
+                                       class="btn btn-default btn-lg">Download xeogl</a></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .footer end -->
+
+    <!-- .subfooter start -->
+    <!-- ================ -->
+    <div class="subfooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">Copyright © 2016 xeogl by <a target="_parent" href="http://xeolabs.com">xeoLabs</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .subfooter end -->
+
+</footer>
+<!-- footer end -->
+
+<!-- JavaScript files placed at the end of the document so the pages load faster
+================================================== -->
+<!-- Jquery and Bootstap core js files -->
+<script type="text/javascript" src="assets/plugins/jquery.min.js"></script>
+<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Modernizr javascript -->
+<script type="text/javascript" src="assets/plugins/modernizr.js"></script>
+
+<!-- Isotope javascript -->
+<script type="text/javascript" src="assets/plugins/isotope/isotope.pkgd.min.js"></script>
+
+<!-- Backstretch javascript -->
+<script type="text/javascript" src="assets/plugins/jquery.backstretch.min.js"></script>
+
+<!-- Appear javascript -->
+<script type="text/javascript" src="assets/plugins/jquery.appear.js"></script>
+
+<!-- Initialization of Plugins -->
+<script type="text/javascript" src="assets/js/template.js"></script>
+
+<!-- Custom Scripts -->
+<script type="text/javascript" src="assets/js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+    <link href="css/styles.css" rel="stylesheet"/>
+
+<body>
+
+<div id="info">
+    <h1><a href="../docs/classes/Geometry.html" target="_parent">Geometry</a> points</h1>
+</div>
+
+<script>
+
+    var mesh = new xeogl.Mesh({
+
+        geometry: new xeogl.Geometry({
+
+            // The primitive type - allowed values are
+            // "points", "lines", "line-loop", "line-strip",
+            // "triangles", "triangle-strip" and "triangle-fan".
+            //
+            // See the OpenGL/WebGL specification docs for
+            // how the coordinate arrays are supposed to be laid out
+            // for them.
+            primitive: "points",
+
+            // The vertices - eight for our cube, each
+            // one spanning three array elements for X,Y and Z
+            positions: createPoints(6000, 5),
+
+            // Indices - these organise the
+            // positions into geometric primitives in accordance
+            // with the "primitive" parameter,
+            // in this case an index for each point.
+            indices: createIndices(6000, 5)
+        }),
+
+        material: new xeogl.PhongMaterial({
+            emissive: [0.6, 0.6, 1.0],
+            pointSize: 5
+        })
+    });
+
+    mesh.scene.on("tick", function () {
+            mesh.scene.camera.orbitYaw(0.3);
+            mesh.scene.camera.orbitPitch(0.1);
+    });
+
+    var cameraControl = new xeogl.CameraControl();
+
+    // Helper func to create random positions
+    function createPoints(n, size) {
+        var halfSize = size / 2;
+        var p = [];
+        for (var i = 0; i < n; i++) {
+            p.push((Math.random() * size) - halfSize, (Math.random() * size) - halfSize, (Math.random() * size) - halfSize);
+        }
+        return p;
+    }
+
+    // Helper func to create
+    function createIndices(n) {
+        n = n / 3;
+        var p = [];
+        for (var i = 0; i < n; i++) {
+            p.push(i);
+        }
+        return p;
+    }
+
+</script>
+</body>
+</html>
