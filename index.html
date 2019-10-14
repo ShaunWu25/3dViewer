@@ -5,10 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
-    <script src="xeogl.js"></script>
+    <script src="js/xeogl.js"></script>
+    <script src="js/app.js">  </script>
     <script src="js/glTFModel.js"></script>
     <script src="js/dat.gui.min.js"></script>
     <script src="js/skybox.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
 
     <link href="css/styles.css" rel="stylesheet"/>
 
@@ -25,14 +27,46 @@
     </ul>
 </div>
 -->
-<form>
-    GUID:<input type="text" name="guid"><br>
-    <input type="submit" value="Submit">
+<form class = "desk">
+    GUID:  <input id="myInput" type="text" name="guid">   <button id = "myButton" type='button'> Submit </button>
+    
+
 </form>
 <div id="dat-gui-container">
 </div>
 
 <script>
+
+    function showName() {                
+        var myName = $("#myInput").val();                
+        //console.log(myName);
+
+        return myName;
+    }
+    var inputGuid;
+    $("#myButton").click(function () {
+        inputGuid = showName();
+        var myTest = guidArray.includes(inputGuid);
+        console.log(myTest);
+
+        if(myTest){
+
+
+        }
+    });
+
+    /*
+    document.getElementById("myButton").addEventListener("click", function(){
+        console.log("button is clicked")
+    });
+    
+    document.addEventListener("click", function(){
+	    console.log("try lah");
+    });
+    */
+    
+
+    var guidArray = [];
     var model = new xeogl.GLTFModel({
         id:"test",
         src: "models/Project1_new.gltf",
@@ -42,14 +76,20 @@
             var objectCount = 0;
             return function (nodeInfo, actions) {
                 if (nodeInfo.mesh !== undefined) { // Node has a mesh
+                    var myName = nodeInfo.name;
+                    guidArray.push(myName);
                     actions.createObject = {
-                        id: "testGUID." + objectCount++
+                        guid: myName
                     };
                 }
                 return true;
             };
         })()
-     });
+    });
+
+    
+
+
     model.on("loaded", function() {
         model.edges = true;
     });
@@ -78,7 +118,10 @@
         } else {
             cameraFlight.flyTo(mesh);
         }
+        console.log(mesh.guid);
     });
+
+    
     cameraControl.on("pickedNothing", function (hit) {
         cameraFlight.flyTo(model);
     });
@@ -262,6 +305,9 @@
         }
     });
 
+
+
+    
 
     /*
     var clips = scene.clips;
