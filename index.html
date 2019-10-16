@@ -39,7 +39,7 @@
 
     function showName() {                
         var myName = $("#myInput").val();                
-        //console.log(myName);
+        console.log(myName);
 
         return myName;
     }
@@ -47,23 +47,15 @@
     $("#myButton").click(function () {
         inputGuid = showName();
         var myTest = guidArray.includes(inputGuid);
-        console.log(myTest);
+        console.log("Is this GUID in the current model? " + myTest);
 
         if(myTest){
-
-
+            cameraFlight.flyTo(model.meshes[inputGuid]);
+            model.highlighted = false;
+            model.meshes[inputGuid].highlighted = true;
         }
     });
 
-    /*
-    document.getElementById("myButton").addEventListener("click", function(){
-        console.log("button is clicked")
-    });
-    
-    document.addEventListener("click", function(){
-	    console.log("try lah");
-    });
-    */
     
 
     var guidArray = [];
@@ -79,6 +71,7 @@
                     var myName = nodeInfo.name;
                     guidArray.push(myName);
                     actions.createObject = {
+                        id: myName,
                         guid: myName
                     };
                 }
@@ -92,7 +85,9 @@
 
     model.on("loaded", function() {
         model.edges = true;
+        cameraFlight.flyTo(model);
     });
+    
     var scene = model.scene;
     var camera = scene.camera;
     var input = scene.input;
@@ -107,9 +102,12 @@
     cameraControl.on("hoverEnter", function (hit) {
         hit.mesh.highlighted = true;
     });
+    
     cameraControl.on("hoverOut", function (hit) {
         hit.mesh.highlighted = false;
+    
     });
+    
     cameraControl.on("picked", function (hit) {
         var mesh = hit.mesh;
         if (input.keyDown[input.KEY_SHIFT]) {
