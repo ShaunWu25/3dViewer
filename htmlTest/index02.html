@@ -15,18 +15,7 @@
     <link href="css/styles.css" rel="stylesheet"/>
 
 <body>
-<!--
-<div id="info">
-    <h1><a href="../docs/classes/GLTFModel.html" target="_parent">GLTFModel</a> - importing Schependomlaan IFC model from glTF</h1>
-    <br>
-    <ul>
-        <li>IFC model from <a href='https://github.com/openBIMstandards/DataSetSchependomlaan' target="_parent">github.com/openBIMstandards</a></li>
-        <li>IFC converted to COLLADA using <a href='http://ifcopenshell.org/ifcconvert.html' target="_parent">IfcConvert</a></li>
-        <li>COLLADA converted to glTF using <a href='https://github.com/KhronosGroup/COLLADA2GLTF' target="_parent">COLLADA2GLTF</a></li>
-        <li>viewed in xeogl using a <a href='../docs/classes/GLTFModel.html' target="_parent">GLTFModel</a> component</li>
-    </ul>
-</div>
--->
+
 <form class = "desk">
     GUID:  <input id="myInput" type="text" name="guid">   <button id = "myButton" type='button'> Submit </button>
     
@@ -79,42 +68,6 @@
             };
         })()
     });
-
-    var structure = new xeogl.GLTFModel({
-        id: "structure",
-        loaded: true,
-        src: "models/gltf/Hospital_Structural.gltf",
-        lambertMaterials: true,
-        edgeThreshold: 3,
-        ghosted: true
-    });
-    var sprinklers = new xeogl.GLTFModel({
-        id: "sprinklers",
-        loaded: false,
-        src: "models/gltf/Hospital_Sprinkle.gltf",
-        lambertMaterials: true,
-        ghosted: false,
-        selected: false,
-        highlighted: false
-    });
-    var fireAlarms = new xeogl.GLTFModel({
-        id: "fireAlarms",
-        loaded: false,
-        src: "models/Hospital_FireAlarm.gltf",
-        lambertMaterials: true,
-        ghosted: false,
-        selected: false,
-        highlighted: false
-    });
-    var electrical = new xeogl.GLTFModel({
-        id: "electrical",
-        loaded: false,
-        src: "models/Hospital_Electrical.gltf",
-        lambertMaterials: true,
-        ghosted: false,
-        highlighted: false
-    });
-
 
     model.on("loaded", function() {
         model.edges = true;
@@ -369,10 +322,6 @@
             return [arry[0] / 255, arry[1] / 255, arry[2] / 255];
         }
     });
-    
-
-
-    
 
     /*
     var clips = scene.clips;

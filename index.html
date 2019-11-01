@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>xeogl Example</title>
+    <title>IBIS 3d-viewer</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
@@ -11,9 +11,12 @@
     <script src="js/dat.gui.min.js"></script>
     <script src="js/skybox.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/helpers/planeHelper.js"></script>
+    <script src="js/helpers/clipHelper.js"></script>
+    <script src="js/geometry/vectorTextGeometry.js"></script>
 
     <link href="css/styles.css" rel="stylesheet"/>
-
+</head>
 <body>
 <!--
 <div id="info">
@@ -29,11 +32,9 @@
 -->
 <form class = "desk">
     GUID:  <input id="myInput" type="text" name="guid">   <button id = "myButton" type='button'> Submit </button>
-    
-
 </form>
-<div id="dat-gui-container">
-</div>
+
+<div id="dat-gui-container"></div>
 
 <script>
 
@@ -89,7 +90,21 @@
         src: "models/Hospital_Structural.gltf",
         lambertMaterials: true,
         edgeThreshold: 3,
-        ghosted: true
+        ghosted: true,
+        handleNode: (function() {
+            var objectCount = 0;
+            return function (nodeInfo, actions) {
+                if (nodeInfo.mesh !== undefined) { // Node has a mesh
+                    var myName = nodeInfo.name;
+                    guidArray.push(myName);
+                    actions.createObject = {
+                        id: myName,
+                        guid: myName
+                    };
+                }
+                return true;
+            };
+        })()
     });
     var sprinklers = new xeogl.GLTFModel({
         id: "sprinklers",
@@ -98,7 +113,21 @@
         lambertMaterials: true,
         ghosted: false,
         selected: false,
-        highlighted: false
+        highlighted: false,
+        handleNode: (function() {
+            var objectCount = 0;
+            return function (nodeInfo, actions) {
+                if (nodeInfo.mesh !== undefined) { // Node has a mesh
+                    var myName = nodeInfo.name;
+                    guidArray.push(myName);
+                    actions.createObject = {
+                        id: myName,
+                        guid: myName
+                    };
+                }
+                return true;
+            };
+        })()
     });
     var fireAlarms = new xeogl.GLTFModel({
         id: "fireAlarms",
@@ -107,7 +136,21 @@
         lambertMaterials: true,
         ghosted: false,
         selected: false,
-        highlighted: false
+        highlighted: false,
+        handleNode: (function() {
+            var objectCount = 0;
+            return function (nodeInfo, actions) {
+                if (nodeInfo.mesh !== undefined) { // Node has a mesh
+                    var myName = nodeInfo.name;
+                    guidArray.push(myName);
+                    actions.createObject = {
+                        id: myName,
+                        guid: myName
+                    };
+                }
+                return true;
+            };
+        })()
     });
     var electrical = new xeogl.GLTFModel({
         id: "electrical",
@@ -115,7 +158,21 @@
         src: "models/Hospital_Electrical.gltf",
         lambertMaterials: true,
         ghosted: false,
-        highlighted: false
+        highlighted: false,
+        handleNode: (function() {
+            var objectCount = 0;
+            return function (nodeInfo, actions) {
+                if (nodeInfo.mesh !== undefined) { // Node has a mesh
+                    var myName = nodeInfo.name;
+                    guidArray.push(myName);
+                    actions.createObject = {
+                        id: myName,
+                        guid: myName
+                    };
+                }
+                return true;
+            };
+        })()
     });
 
     var scene = structure.scene;
@@ -141,7 +198,6 @@
     
     cameraControl.on("hoverOut", function (hit) {
         hit.mesh.highlighted = false;
-    
     });
     
     cameraControl.on("picked", function (hit) {
@@ -189,11 +245,61 @@
         }, 100);
     });
     
+    var clips = scene.clips;
+    clips.clips = [
+    new xeogl.Clip({  // Clip plane on negative diagonal
+        id: 0,
+        pos: [0, 0, 0],
+        dir: [1.0, 0, 0],
+        autoPlaneSize: true,
+        active: true,
+        solid: true,
+        visible: true
+    }),
+
+    ];
+    /*
+    var clips = scene.clips;
+    clips.clips = [
+        new xeogl.Clip({
+            id: "clip0",
+            pos: [100, 235, -174],
+            dir: [-1, -1, -1],
+            active: true,
+            solid: true,
+            visible: true
+        })
+    ]
+    
+    for (var id in scene.clips) {
+        if (scene.clips.hasOwnProperty(id)) {
+            var clip = scene.clips[id];
+            new xeogl.ClipHelper({
+                clip: clip,
+                planeSize: [100, 100],
+                autoPlaneSize: true,
+                visible: true,
+                solid: true // Filled planes
+            });
+        }
+    }
+    */
     var gui = new dat.GUI({autoPlace: false, top: 0, right: 10, width: 350});
     document.getElementById('dat-gui-container').appendChild(gui.domElement);
     var modelIds = Object.keys(scene.models);
+
+    var guiControl = new function(){
+        this.xPos = 0;
+    }
+
     var Menu = function () {
+        
+        //var clippingPlane = scene.clips.clips["0"];
+        
+        this.pos = 0.0;
+        
         this.message = "Models";
+
         for (var i = 0; i < modelIds.length; i++) {
             var modelId = modelIds[i];
             var model = scene.models[modelId];
@@ -229,7 +335,10 @@
                 if (model.highlighted !== highlighted) {
                     model.highlighted = highlighted;
                 }
+                
             }
+            scene.clips.clips["0"].pos[0] = guiControl.xPos;
+            
             requestAnimationFrame(update);
         };
         update();
@@ -246,24 +355,12 @@
         folder.add(menu, modelId + ".highlighted", model.highlighted);
         folder.open();
     }
-
-    var clips = scene.clips;
-    clips.clips = [
-    new xeogl.Clip({  // Clip plane on negative diagonal
-        pos: [1.0, 1.0, 1.0].listen(),
-        dir: [1.0, 1.0, 1.0],
-        active: true
-    }),
-    /*
-    new xeogl.Clip({ // Clip plane on positive diagonal
-        pos: [-1.0, -1.0, -1.0],
-        dir: [1.0, 1.0, 1.0],
-        active: true
-    }),
-    */
-    //...
-    ];
-
+    
+    var clipFolder = gui.addFolder("clipFolder")
+    clipFolder.add(guiControl, "xPos", 0, 100);
+    folder.open();
+    
+    
 </script>
 </body>
 </html>
