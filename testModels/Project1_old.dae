@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <authoring_tool>IfcOpenShell 0.4.0-rc2</authoring_tool>
+    </contributor>
+    <created>2019-09-27T15:08:36</created>
+    <modified>2019-09-27T15:08:36</modified>
+    <unit name="METER" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="IfcWallStandardCase-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <diffuse>
+              <color>0.9 0.9 0.9 1</color>
+            </diffuse>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="IfcSlab-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <diffuse>
+              <color>0.4 0.4 0.4 1</color>
+            </diffuse>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="IfcWallStandardCase">
+      <instance_effect url="#IfcWallStandardCase-fx"/>
+    </material>
+    <material id="IfcSlab">
+      <instance_effect url="#IfcSlab-fx"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="172_BasicWallWall200mm2313">
+      <mesh>
+        <source id="172_BasicWallWall200mm2313-positions">
+          <float_array id="172_BasicWallWall200mm2313-positions-array" count="90">5.2 0.1 0 5.2 0.1 3.2 2.0848 0.1 3.2 1.8848 0.1 3.2 0.2 0.1 3.2 0 0.1 3.2 0 0.1 0 5.2 -0.1 0 5.2 -0.1 3.2 5.2 0.1 3.2 5.2 0.1 0 5.2 0.1 0 0 0.1 0 0 -0.1 0 5.2 -0.1 0 5.2 0.1 3.2 2.0848 0.1 3.2 5.2 -0.1 3.2 0 -0.1 3.2 0 0.1 3.2 0.2 0.1 3.2 1.8848 0.1 3.2 0 0.1 0 0 0.1 3.2 0 -0.1 3.2 0 -0.1 0 0 -0.1 0 0 -0.1 3.2 5.2 -0.1 3.2 5.2 -0.1 0</float_array>
+          <technique_common>
+            <accessor source="#172_BasicWallWall200mm2313-positions-array" count="30" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="172_BasicWallWall200mm2313-normals">
+          <float_array id="172_BasicWallWall200mm2313-normals-array" count="90">0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#172_BasicWallWall200mm2313-normals-array" count="30" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="172_BasicWallWall200mm2313-vertices">
+          <input semantic="POSITION" source="#172_BasicWallWall200mm2313-positions"/>
+        </vertices>
+        <triangles material="IfcWallStandardCase" count="18">
+          <input semantic="VERTEX" source="#172_BasicWallWall200mm2313-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#172_BasicWallWall200mm2313-normals" offset="1"/>
+          <p>2 2 1 1 0 0 3 3 2 2 6 6 4 4 3 3 6 6 5 5 4 4 6 6 2 2 0 0 6 6 9 9 8 8 7 7 9 9 7 7 10 10 12 12 14 14 13 13 12 12 11 11 14 14 17 17 15 15 16 16 16 16 21 21 18 18 17 17 16 16 18 18 18 18 21 21 20 20 18 18 20 20 19 19 24 24 23 23 22 22 24 24 22 22 25 25 27 27 26 26 29 29 28 28 27 27 29 29</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="344_BasicWallWall200mm2314">
+      <mesh>
+        <source id="344_BasicWallWall200mm2314-positions">
+          <float_array id="344_BasicWallWall200mm2314-positions-array" count="162">5.2 0.1 0 4.924915 0.1 0 4.924915 0.1 2.653733 4.100561 0.1 2.653733 4.100561 0.1 0 0 0.1 0 0 0.1 3.2 0.2 0.1 3.2 3.2048 0.1 3.2 3.4048 0.1 3.2 5.2 0.1 3.2 5.2 0.1 0 4.924915 0.1 0 4.924915 -0.1 0 5.2 -0.1 0 4.924915 -0.1 2.653733 4.924915 -0.1 0 4.924915 0.1 0 4.924915 0.1 2.653733 4.100561 -0.1 2.653733 4.100561 0.1 2.653733 4.924915 -0.1 2.653733 4.924915 0.1 2.653733 4.100561 -0.1 0 4.100561 -0.1 2.653733 4.100561 0.1 2.653733 4.100561 0.1 0 4.100561 0.1 0 0 0.1 0 0 -0.1 0 4.100561 -0.1 0 0 0.1 0 0 0.1 3.2 0 -0.1 3.2 0 -0.1 0 5.2 0.1 3.2 3.4048 0.1 3.2 5.2 -0.1 3.2 0 -0.1 3.2 0 0.1 3.2 0.2 0.1 3.2 3.2048 0.1 3.2 5.2 -0.1 0 5.2 -0.1 3.2 5.2 0.1 3.2 5.2 0.1 0 0 -0.1 0 4.100561 -0.1 0 4.100561 -0.1 2.653733 4.924915 -0.1 2.653733 4.924915 -0.1 0 5.2 -0.1 0 5.2 -0.1 3.2 0 -0.1 3.2</float_array>
+          <technique_common>
+            <accessor source="#344_BasicWallWall200mm2314-positions-array" count="54" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="344_BasicWallWall200mm2314-normals">
+          <float_array id="344_BasicWallWall200mm2314-normals-array" count="162">0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#344_BasicWallWall200mm2314-normals-array" count="54" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="344_BasicWallWall200mm2314-vertices">
+          <input semantic="POSITION" source="#344_BasicWallWall200mm2314-positions"/>
+        </vertices>
+        <triangles material="IfcWallStandardCase" count="34">
+          <input semantic="VERTEX" source="#344_BasicWallWall200mm2314-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#344_BasicWallWall200mm2314-normals" offset="1"/>
+          <p>10 10 2 2 3 3 10 10 3 3 9 9 9 9 3 3 8 8 2 2 10 10 0 0 2 2 0 0 1 1 8 8 3 3 4 4 6 6 7 7 5 5 7 7 8 8 5 5 8 8 4 4 5 5 13 13 11 11 14 14 12 12 11 11 13 13 16 16 18 18 17 17 16 16 15 15 18 18 21 21 19 19 20 20 21 21 20 20 22 22 24 24 26 26 25 25 24 24 23 23 26 26 29 29 27 27 30 30 28 28 27 27 29 29 33 33 32 32 31 31 33 33 31 31 34 34 37 37 35 35 36 36 37 37 36 36 41 41 37 37 41 41 38 38 38 38 41 41 40 40 38 38 40 40 39 39 44 44 43 43 42 42 44 44 42 42 45 45 53 53 46 46 48 48 53 53 48 48 52 52 52 52 48 48 49 49 48 48 46 46 47 47 49 49 50 50 51 51 52 52 49 49 51 51</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="483_BasicWallWall200mm2315">
+      <mesh>
+        <source id="483_BasicWallWall200mm2315-positions">
+          <float_array id="483_BasicWallWall200mm2315-positions-array" count="90">5.2 0.1 0 5.2 0.1 3.2 3.5152 0.1 3.2 3.3152 0.1 3.2 0.2 0.1 3.2 0 0.1 3.2 0 0.1 0 5.2 -0.1 0 5.2 -0.1 3.2 5.2 0.1 3.2 5.2 0.1 0 5.2 0.1 0 0 0.1 0 0 -0.1 0 5.2 -0.1 0 5.2 0.1 3.2 3.5152 0.1 3.2 5.2 -0.1 3.2 0 -0.1 3.2 0 0.1 3.2 0.2 0.1 3.2 3.3152 0.1 3.2 0 0.1 0 0 0.1 3.2 0 -0.1 3.2 0 -0.1 0 0 -0.1 0 0 -0.1 3.2 5.2 -0.1 3.2 5.2 -0.1 0</float_array>
+          <technique_common>
+            <accessor source="#483_BasicWallWall200mm2315-positions-array" count="30" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="483_BasicWallWall200mm2315-normals">
+          <float_array id="483_BasicWallWall200mm2315-normals-array" count="90">0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#483_BasicWallWall200mm2315-normals-array" count="30" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="483_BasicWallWall200mm2315-vertices">
+          <input semantic="POSITION" source="#483_BasicWallWall200mm2315-positions"/>
+        </vertices>
+        <triangles material="IfcWallStandardCase" count="18">
+          <input semantic="VERTEX" source="#483_BasicWallWall200mm2315-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#483_BasicWallWall200mm2315-normals" offset="1"/>
+          <p>2 2 1 1 0 0 3 3 2 2 0 0 4 4 3 3 6 6 5 5 4 4 6 6 3 3 0 0 6 6 9 9 8 8 7 7 9 9 7 7 10 10 12 12 14 14 13 13 12 12 11 11 14 14 17 17 15 15 16 16 17 17 16 16 21 21 17 17 21 21 18 18 18 18 21 21 20 20 18 18 20 20 19 19 24 24 23 23 22 22 24 24 22 22 25 25 27 27 26 26 29 29 28 28 27 27 29 29</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="569_BasicWallWall200mm2316">
+      <mesh>
+        <source id="569_BasicWallWall200mm2316-positions">
+          <float_array id="569_BasicWallWall200mm2316-positions-array" count="150">5.2 0.1 0 5.2 0.1 3.2 0 0.1 0 0.2 0.1 3.2 0 0.1 3.2 4.2 0.1 2.8 4.2 0.1 1.424024 1.485796 0.1 2.8 1.485796 0.1 1.424024 5.2 -0.1 0 5.2 -0.1 3.2 5.2 0.1 3.2 5.2 0.1 0 5.2 0.1 0 0 0.1 0 0 -0.1 0 5.2 -0.1 0 5.2 0.1 3.2 0.2 0.1 3.2 5.2 -0.1 3.2 0 -0.1 3.2 0 0.1 3.2 0 0.1 0 0 0.1 3.2 0 -0.1 3.2 0 -0.1 0 4.2 -0.1 2.8 4.2 0.1 2.8 4.2 -0.1 1.424024 4.2 0.1 1.424024 1.485796 -0.1 2.8 1.485796 0.1 2.8 4.2 -0.1 2.8 4.2 0.1 2.8 1.485796 -0.1 1.424024 1.485796 0.1 1.424024 1.485796 -0.1 2.8 1.485796 0.1 2.8 4.2 -0.1 1.424024 4.2 0.1 1.424024 1.485796 -0.1 1.424024 1.485796 0.1 1.424024 0 -0.1 0 0 -0.1 3.2 5.2 -0.1 0 5.2 -0.1 3.2 4.2 -0.1 1.424024 1.485796 -0.1 1.424024 1.485796 -0.1 2.8 4.2 -0.1 2.8</float_array>
+          <technique_common>
+            <accessor source="#569_BasicWallWall200mm2316-positions-array" count="50" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="569_BasicWallWall200mm2316-normals">
+          <float_array id="569_BasicWallWall200mm2316-normals-array" count="150">0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#569_BasicWallWall200mm2316-normals-array" count="50" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="569_BasicWallWall200mm2316-vertices">
+          <input semantic="POSITION" source="#569_BasicWallWall200mm2316-positions"/>
+        </vertices>
+        <triangles material="IfcWallStandardCase" count="34">
+          <input semantic="VERTEX" source="#569_BasicWallWall200mm2316-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#569_BasicWallWall200mm2316-normals" offset="1"/>
+          <p>5 5 1 1 6 6 6 6 1 1 0 0 1 1 5 5 7 7 1 1 7 7 3 3 4 4 3 3 8 8 6 6 0 0 8 8 3 3 7 7 8 8 4 4 8 8 2 2 8 8 0 0 2 2 11 11 10 10 9 9 11 11 9 9 12 12 14 14 16 16 15 15 14 14 13 13 16 16 19 19 17 17 18 18 20 20 19 19 18 18 20 20 18 18 21 21 24 24 23 23 22 22 24 24 22 22 25 25 29 29 26 26 27 27 28 28 26 26 29 29 32 32 30 30 31 31 32 32 31 31 33 33 37 37 34 34 35 35 36 36 34 34 37 37 40 40 38 38 39 39 40 40 39 39 41 41 43 43 42 42 47 47 48 48 43 43 47 47 48 48 49 49 45 45 43 43 48 48 45 45 45 45 49 49 46 46 46 46 47 47 44 44 47 47 42 42 44 44 45 45 46 46 44 44</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="702_BasicWallWall200mm2519">
+      <mesh>
+        <source id="702_BasicWallWall200mm2519-positions">
+          <float_array id="702_BasicWallWall200mm2519-positions-array" count="228">5 0.1 0 4.724915 0.1 0 4.724915 0.1 2.653733 3.900561 0.1 2.653733 3.900561 0.1 0 1.901595 0.1 0 1.901595 0.1 2.520114 0.7380818 0.1 2.520114 0.7380818 0.1 0 0 0.1 0 0 0.1 3.2 5 0.1 3.2 5 0.1 0 4.724915 0.1 0 4.724915 -0.1 0 5 -0.1 0 4.724915 -0.1 2.653733 4.724915 -0.1 0 4.724915 0.1 0 4.724915 0.1 2.653733 3.900561 -0.1 2.653733 3.900561 0.1 2.653733 4.724915 -0.1 2.653733 4.724915 0.1 2.653733 3.900561 -0.1 0 3.900561 -0.1 2.653733 3.900561 0.1 2.653733 3.900561 0.1 0 3.900561 0.1 0 1.901595 0.1 0 1.901595 -0.1 0 3.900561 -0.1 0 1.901595 -0.1 2.520114 1.901595 -0.1 0 1.901595 0.1 0 1.901595 0.1 2.520114 0.7380818 -0.1 2.520114 0.7380818 0.1 2.520114 1.901595 -0.1 2.520114 1.901595 0.1 2.520114 0.7380818 -0.1 0 0.7380818 -0.1 2.520114 0.7380818 0.1 2.520114 0.7380818 0.1 0 0.7380818 0.1 0 0 0.1 0 0 -0.1 0 0.7380818 -0.1 0 0 0.1 0 0 0.1 3.2 0 -0.1 3.2 0 -0.1 0 5 0.1 3.2 0 0.1 3.2 5 -0.1 3.2 3.2048 -0.1 3.2 3.0048 -0.1 3.2 0 -0.1 3.2 5 -0.1 0 5 -0.1 3.2 5 0.1 3.2 5 0.1 0 0 -0.1 0 0.7380818 -0.1 0 0.7380818 -0.1 2.520114 1.901595 -0.1 2.520114 1.901595 -0.1 0 3.900561 -0.1 0 3.900561 -0.1 2.653733 4.724915 -0.1 2.653733 4.724915 -0.1 0 5 -0.1 0 5 -0.1 3.2 3.2048 -0.1 3.2 3.0048 -0.1 3.2 0 -0.1 3.2</float_array>
+          <technique_common>
+            <accessor source="#702_BasicWallWall200mm2519-positions-array" count="76" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="702_BasicWallWall200mm2519-normals">
+          <float_array id="702_BasicWallWall200mm2519-normals-array" count="228">0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#702_BasicWallWall200mm2519-normals-array" count="76" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="702_BasicWallWall200mm2519-vertices">
+          <input semantic="POSITION" source="#702_BasicWallWall200mm2519-positions"/>
+        </vertices>
+        <triangles material="IfcWallStandardCase" count="48">
+          <input semantic="VERTEX" source="#702_BasicWallWall200mm2519-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#702_BasicWallWall200mm2519-normals" offset="1"/>
+          <p>11 11 2 2 3 3 2 2 11 11 0 0 2 2 0 0 1 1 11 11 3 3 6 6 6 6 3 3 4 4 6 6 7 7 10 10 11 11 6 6 10 10 6 6 4 4 5 5 7 7 8 8 9 9 10 10 7 7 9 9 14 14 12 12 15 15 13 13 12 12 14 14 17 17 19 19 18 18 17 17 16 16 19 19 22 22 20 20 21 21 22 22 21 21 23 23 25 25 27 27 26 26 25 25 24 24 27 27 29 29 31 31 30 30 29 29 28 28 31 31 34 34 32 32 35 35 33 33 32 32 34 34 38 38 36 36 37 37 38 38 37 37 39 39 42 42 40 40 43 43 41 41 40 40 42 42 45 45 47 47 46 46 45 45 44 44 47 47 50 50 49 49 48 48 50 50 48 48 51 51 54 54 52 52 55 55 57 57 56 56 53 53 55 55 52 52 53 53 56 56 55 55 53 53 60 60 59 59 58 58 60 60 58 58 61 61 75 75 64 64 65 65 75 75 65 65 74 74 64 64 75 75 62 62 64 64 62 62 63 63 73 73 74 74 68 68 74 74 65 65 68 68 73 73 68 68 72 72 72 72 68 68 69 69 65 65 66 66 67 67 68 68 65 65 67 67 69 69 70 70 71 71 72 72 69 69 71 71</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="869_BasicWallWall200mm2559">
+      <mesh>
+        <source id="869_BasicWallWall200mm2559-positions">
+          <float_array id="869_BasicWallWall200mm2559-positions-array" count="72">1.6848 0.1 0 1.6848 0.1 3.2 0 0.1 3.2 0 0.1 0 1.6848 -0.1 0 1.6848 -0.1 3.2 1.6848 0.1 3.2 1.6848 0.1 0 1.6848 0.1 0 0 0.1 0 0 -0.1 0 1.6848 -0.1 0 1.6848 0.1 3.2 0 0.1 3.2 1.6848 -0.1 3.2 0 -0.1 3.2 0 0.1 0 0 0.1 3.2 0 -0.1 3.2 0 -0.1 0 0 -0.1 0 0 -0.1 3.2 1.6848 -0.1 3.2 1.6848 -0.1 0</float_array>
+          <technique_common>
+            <accessor source="#869_BasicWallWall200mm2559-positions-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="869_BasicWallWall200mm2559-normals">
+          <float_array id="869_BasicWallWall200mm2559-normals-array" count="72">0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#869_BasicWallWall200mm2559-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="869_BasicWallWall200mm2559-vertices">
+          <input semantic="POSITION" source="#869_BasicWallWall200mm2559-positions"/>
+        </vertices>
+        <triangles material="IfcWallStandardCase" count="12">
+          <input semantic="VERTEX" source="#869_BasicWallWall200mm2559-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#869_BasicWallWall200mm2559-normals" offset="1"/>
+          <p>2 2 1 1 0 0 2 2 0 0 3 3 6 6 5 5 4 4 6 6 4 4 7 7 10 10 8 8 11 11 9 9 8 8 10 10 14 14 12 12 15 15 15 15 12 12 13 13 18 18 17 17 16 16 18 18 16 16 19 19 22 22 21 21 20 20 22 22 20 20 23 23</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="924_FloorFloor12887">
+      <mesh>
+        <source id="924_FloorFloor12887-positions">
+          <float_array id="924_FloorFloor12887-positions-array" count="72">-0.2598734 -0.2236709 3.5 -0.2598734 -0.2236709 3.2 -0.2598734 5.176329 3.5 -0.2598734 5.176329 3.2 -0.2598734 5.176329 3.5 -0.2598734 5.176329 3.2 5.140127 5.176329 3.5 5.140127 5.176329 3.2 5.140127 5.176329 3.5 5.140127 5.176329 3.2 5.140127 -0.2236709 3.5 5.140127 -0.2236709 3.2 5.140127 -0.2236709 3.5 5.140127 -0.2236709 3.2 -0.2598734 -0.2236709 3.5 -0.2598734 -0.2236709 3.2 -0.2598734 -0.2236709 3.5 -0.2598734 5.176329 3.5 5.140127 5.176329 3.5 5.140127 -0.2236709 3.5 -0.2598734 -0.2236709 3.2 -0.2598734 5.176329 3.2 5.140127 5.176329 3.2 5.140127 -0.2236709 3.2</float_array>
+          <technique_common>
+            <accessor source="#924_FloorFloor12887-positions-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="924_FloorFloor12887-normals">
+          <float_array id="924_FloorFloor12887-normals-array" count="72">-1 0 0 -1 0 0 -1 0 0 -1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#924_FloorFloor12887-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="924_FloorFloor12887-vertices">
+          <input semantic="POSITION" source="#924_FloorFloor12887-positions"/>
+        </vertices>
+        <triangles material="IfcSlab" count="12">
+          <input semantic="VERTEX" source="#924_FloorFloor12887-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#924_FloorFloor12887-normals" offset="1"/>
+          <p>1 1 0 0 2 2 3 3 1 1 2 2 5 5 4 4 6 6 7 7 5 5 6 6 9 9 8 8 10 10 11 11 9 9 10 10 13 13 12 12 14 14 15 15 13 13 14 14 19 19 17 17 16 16 19 19 18 18 17 17 20 20 21 21 23 23 21 21 22 22 23 23</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="1023_FloorFloor12923">
+      <mesh>
+        <source id="1023_FloorFloor12923-positions">
+          <float_array id="1023_FloorFloor12923-positions-array" count="72">-1.644996 -2.746686 0 -1.644996 -2.746686 -0.3 -1.644996 7.353314 0 -1.644996 7.353314 -0.3 -1.644996 7.353314 0 -1.644996 7.353314 -0.3 6.955004 7.353314 0 6.955004 7.353314 -0.3 6.955004 7.353314 0 6.955004 7.353314 -0.3 6.955004 -2.746686 0 6.955004 -2.746686 -0.3 6.955004 -2.746686 0 6.955004 -2.746686 -0.3 -1.644996 -2.746686 0 -1.644996 -2.746686 -0.3 -1.644996 -2.746686 0 -1.644996 7.353314 0 6.955004 7.353314 0 6.955004 -2.746686 0 -1.644996 -2.746686 -0.3 -1.644996 7.353314 -0.3 6.955004 7.353314 -0.3 6.955004 -2.746686 -0.3</float_array>
+          <technique_common>
+            <accessor source="#1023_FloorFloor12923-positions-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="1023_FloorFloor12923-normals">
+          <float_array id="1023_FloorFloor12923-normals-array" count="72">-1 0 0 -1 0 0 -1 0 0 -1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#1023_FloorFloor12923-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="1023_FloorFloor12923-vertices">
+          <input semantic="POSITION" source="#1023_FloorFloor12923-positions"/>
+        </vertices>
+        <triangles material="IfcSlab" count="12">
+          <input semantic="VERTEX" source="#1023_FloorFloor12923-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#1023_FloorFloor12923-normals" offset="1"/>
+          <p>1 1 0 0 2 2 3 3 1 1 2 2 5 5 4 4 6 6 7 7 5 5 6 6 9 9 8 8 11 11 11 11 8 8 10 10 13 13 12 12 14 14 15 15 13 13 14 14 19 19 17 17 16 16 19 19 18 18 17 17 20 20 21 21 23 23 21 21 22 22 23 23</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="IfcOpenShell">
+      <node id="172_BasicWallWall200mm2313-instance" name="172_BasicWallWall200mm2313" type="NODE">
+        <matrix>1 0 0 -0.2598734 0 1 0 -0.1236709 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#172_BasicWallWall200mm2313">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="IfcWallStandardCase" target="#IfcWallStandardCase"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="344_BasicWallWall200mm2314-instance" name="344_BasicWallWall200mm2314" type="NODE">
+        <matrix>0 1 0 -0.1598734 -1 0 0 5.176329 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#344_BasicWallWall200mm2314">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="IfcWallStandardCase" target="#IfcWallStandardCase"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="483_BasicWallWall200mm2315-instance" name="483_BasicWallWall200mm2315" type="NODE">
+        <matrix>-1 0 0 5.140127 0 -1 0 5.076329 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#483_BasicWallWall200mm2315">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="IfcWallStandardCase" target="#IfcWallStandardCase"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="569_BasicWallWall200mm2316-instance" name="569_BasicWallWall200mm2316" type="NODE">
+        <matrix>0 -1 0 5.040127 1 0 0 -0.2236709 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#569_BasicWallWall200mm2316">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="IfcWallStandardCase" target="#IfcWallStandardCase"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="702_BasicWallWall200mm2519-instance" name="702_BasicWallWall200mm2519" type="NODE">
+        <matrix>0 1 0 1.724927 -1 0 0 4.976329 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#702_BasicWallWall200mm2519">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="IfcWallStandardCase" target="#IfcWallStandardCase"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="869_BasicWallWall200mm2559-instance" name="869_BasicWallWall200mm2559" type="NODE">
+        <matrix>-1 0 0 1.624927 0 -1 0 1.871529 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#869_BasicWallWall200mm2559">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="IfcWallStandardCase" target="#IfcWallStandardCase"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="924_FloorFloor12887-instance" name="924_FloorFloor12887" type="NODE">
+        <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#924_FloorFloor12887">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="IfcSlab" target="#IfcSlab"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="1023_FloorFloor12923-instance" name="1023_FloorFloor12923" type="NODE">
+        <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#1023_FloorFloor12923">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="IfcSlab" target="#IfcSlab"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#IfcOpenShell"/>
+  </scene>
+</COLLADA>

@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ifc xmlns:xlink="http://www.w3.org/1999/xlink">
+	<header>
+		<file_description>
+			<description>ViewDefinition [CoordinationView]</description>
+			<implementation_level>2;1</implementation_level>
+		</file_description>
+		<file_name>
+			<author/>
+			<organization/>
+			<name/>
+			<time_stamp>2017-05-05T15:27:06</time_stamp>
+			<preprocessor_version>The EXPRESS Data Manager Version 5.02.0100.07 : 28 Aug 2013</preprocessor_version>
+			<originating_system>20150220_1215(x64) - Exporter 16.0.428.0 - Default UI</originating_system>
+			<authorization/>
+		</file_name>
+		<file_schema>
+			<schema_identifiers>IFC2X3</schema_identifiers>
+		</file_schema>
+	</header>
+	<units>
+		<IfcSIUnit UnitType="LENGTHUNIT" Prefix="MILLI" Name="METRE" SI_equivalent="0.001"/>
+		<IfcSIUnit UnitType="AREAUNIT" Name="SQUARE_METRE" SI_equivalent="1"/>
+		<IfcSIUnit UnitType="VOLUMEUNIT" Name="CUBIC_METRE" SI_equivalent="1"/>
+		<IfcConversionBasedUnit UnitType="PLANEANGLEUNIT" Name="DEGREE" SI_equivalent="0.017453292519943299"/>
+		<IfcSIUnit UnitType="MASSUNIT" Prefix="KILO" Name="GRAM" SI_equivalent="1000"/>
+		<IfcSIUnit UnitType="TIMEUNIT" Name="SECOND" SI_equivalent="1"/>
+		<IfcSIUnit UnitType="FREQUENCYUNIT" Name="HERTZ" SI_equivalent="1"/>
+		<IfcSIUnit UnitType="THERMODYNAMICTEMPERATUREUNIT" Name="DEGREE_CELSIUS" SI_equivalent="1"/>
+		<IfcSIUnit UnitType="ELECTRICCURRENTUNIT" Name="AMPERE" SI_equivalent="1"/>
+		<IfcSIUnit UnitType="ELECTRICVOLTAGEUNIT" Name="VOLT" SI_equivalent="1"/>
+		<IfcSIUnit UnitType="POWERUNIT" Name="WATT" SI_equivalent="1"/>
+		<IfcSIUnit UnitType="FORCEUNIT" Prefix="KILO" Name="NEWTON" SI_equivalent="1000"/>
+		<IfcSIUnit UnitType="ILLUMINANCEUNIT" Name="LUX" SI_equivalent="1"/>
+		<IfcSIUnit UnitType="LUMINOUSFLUXUNIT" Name="LUMEN" SI_equivalent="1"/>
+		<IfcSIUnit UnitType="LUMINOUSINTENSITYUNIT" Name="CANDELA" SI_equivalent="1"/>
+		<IfcSIUnit UnitType="PRESSUREUNIT" Name="PASCAL" SI_equivalent="1"/>
+	</units>
+	<properties>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZE9n" Name="Constraints">
+			<IfcPropertySingleValue Name="Base Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Base Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Base is Attached" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Base Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Location Line" NominalValue="Wall Centerline"/>
+			<IfcPropertySingleValue Name="Related to Mass" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Room Bounding" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Top is Attached" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Unconnected Height" NominalValue="3500"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrXoZE9n" Name="Dimensions">
+			<IfcPropertySingleValue Name="Area" NominalValue="16.64"/>
+			<IfcPropertySingleValue Name="Length" NominalValue="5200"/>
+			<IfcPropertySingleValue Name="Volume" NominalValue="3.328"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrjoZE9n" Name="Identity Data">
+			<IfcPropertySingleValue Name="precast" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1dfKwNk7j9GRk7c$9tGHIv" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Walls"/>
+			<IfcPropertySingleValue Name="Family" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Family and Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type Id" NominalValue="Basic Wall: Wall 200mm"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZE9n" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrToZE9n" Name="Structural">
+			<IfcPropertySingleValue Name="Enable Analytical Model" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural Usage" NominalValue="Non-bearing"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbmToZEwB" Name="Analytical Properties">
+			<IfcPropertySingleValue Name="Absorptance" NominalValue="0.1"/>
+			<IfcPropertySingleValue Name="Roughness" NominalValue="1"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrvoZEwB" Name="Construction">
+			<IfcPropertySingleValue Name="Function" NominalValue="Exterior"/>
+			<IfcPropertySingleValue Name="Width" NominalValue="200"/>
+			<IfcPropertySingleValue Name="Wrapping at Ends" NominalValue="None"/>
+			<IfcPropertySingleValue Name="Wrapping at Inserts" NominalValue="Do not wrap"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrzoZEwB" Name="Graphics">
+			<IfcPropertySingleValue Name="Coarse Scale Fill Color" NominalValue="0"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrjoZEwB" Name="Identity Data">
+			<IfcPropertySingleValue Name="Assembly Code" NominalValue=""/>
+			<IfcPropertySingleValue Name="Assembly Description" NominalValue=""/>
+			<IfcPropertySingleValue Name="Type Name" NominalValue="Wall 200mm"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="3bSRf6hATFBfTLnT_9X54a" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Walls"/>
+			<IfcPropertySingleValue Name="Family Name" NominalValue="Basic Wall"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUScgToZE9n" Name="Pset_WallCommon">
+			<IfcPropertySingleValue Name="Reference" NominalValue="Wall 200mm"/>
+			<IfcPropertySingleValue Name="LoadBearing" NominalValue="false"/>
+			<IfcPropertySingleValue Name="ExtendToStructure" NominalValue="true"/>
+			<IfcPropertySingleValue Name="IsExternal" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZE9o" Name="Constraints">
+			<IfcPropertySingleValue Name="Base Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Base Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Base is Attached" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Base Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Location Line" NominalValue="Wall Centerline"/>
+			<IfcPropertySingleValue Name="Related to Mass" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Room Bounding" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Top is Attached" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Unconnected Height" NominalValue="3500"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrXoZE9o" Name="Dimensions">
+			<IfcPropertySingleValue Name="Area" NominalValue="14.4524"/>
+			<IfcPropertySingleValue Name="Length" NominalValue="5200"/>
+			<IfcPropertySingleValue Name="Volume" NominalValue="2.89048"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrjoZE9o" Name="Identity Data">
+			<IfcPropertySingleValue Name="precast" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="0Zji5h_1H5O84MJZwjiOAu" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Walls"/>
+			<IfcPropertySingleValue Name="Family" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Family and Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type Id" NominalValue="Basic Wall: Wall 200mm"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZE9o" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrToZE9o" Name="Structural">
+			<IfcPropertySingleValue Name="Enable Analytical Model" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural Usage" NominalValue="Non-bearing"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZE6e" Name="Constraints">
+			<IfcPropertySingleValue Name="Base Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Base Offset" NominalValue="-34.6753"/>
+			<IfcPropertySingleValue Name="Top Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Top Offset" NominalValue="2653.73"/>
+			<IfcPropertySingleValue Name="Unconnected Height" NominalValue="2688.41"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="2$7HMcoHf84vJa10ntBiVW" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Rectangular Straight Wall Opening"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZE6e" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUScgToZE9o" Name="Pset_WallCommon">
+			<IfcPropertySingleValue Name="Reference" NominalValue="Wall 200mm"/>
+			<IfcPropertySingleValue Name="LoadBearing" NominalValue="false"/>
+			<IfcPropertySingleValue Name="ExtendToStructure" NominalValue="true"/>
+			<IfcPropertySingleValue Name="IsExternal" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZE9p" Name="Constraints">
+			<IfcPropertySingleValue Name="Base Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Base Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Base is Attached" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Base Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Location Line" NominalValue="Wall Centerline"/>
+			<IfcPropertySingleValue Name="Related to Mass" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Room Bounding" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Top is Attached" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Unconnected Height" NominalValue="3500"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrXoZE9p" Name="Dimensions">
+			<IfcPropertySingleValue Name="Area" NominalValue="16.64"/>
+			<IfcPropertySingleValue Name="Length" NominalValue="5200"/>
+			<IfcPropertySingleValue Name="Volume" NominalValue="3.328"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrjoZE9p" Name="Identity Data">
+			<IfcPropertySingleValue Name="precast" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="3j4Z944cb6kBrRDi7TJ1EW" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Walls"/>
+			<IfcPropertySingleValue Name="Family" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Family and Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type Id" NominalValue="Basic Wall: Wall 200mm"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZE9p" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrToZE9p" Name="Structural">
+			<IfcPropertySingleValue Name="Enable Analytical Model" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural Usage" NominalValue="Non-bearing"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUScgToZE9p" Name="Pset_WallCommon">
+			<IfcPropertySingleValue Name="Reference" NominalValue="Wall 200mm"/>
+			<IfcPropertySingleValue Name="LoadBearing" NominalValue="false"/>
+			<IfcPropertySingleValue Name="ExtendToStructure" NominalValue="true"/>
+			<IfcPropertySingleValue Name="IsExternal" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZE9q" Name="Constraints">
+			<IfcPropertySingleValue Name="Base Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Base Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Base is Attached" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Base Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Location Line" NominalValue="Wall Centerline"/>
+			<IfcPropertySingleValue Name="Related to Mass" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Room Bounding" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Top is Attached" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Unconnected Height" NominalValue="3500"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrXoZE9q" Name="Dimensions">
+			<IfcPropertySingleValue Name="Area" NominalValue="12.9053"/>
+			<IfcPropertySingleValue Name="Length" NominalValue="5200"/>
+			<IfcPropertySingleValue Name="Volume" NominalValue="2.58106"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrjoZE9q" Name="Identity Data">
+			<IfcPropertySingleValue Name="precast" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1AyNzjzan32OfBxfzm01dy" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Walls"/>
+			<IfcPropertySingleValue Name="Family" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Family and Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type Id" NominalValue="Basic Wall: Wall 200mm"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZE9q" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrToZE9q" Name="Structural">
+			<IfcPropertySingleValue Name="Enable Analytical Model" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural Usage" NominalValue="Non-bearing"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZE68" Name="Constraints">
+			<IfcPropertySingleValue Name="Base Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Top Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Base Offset" NominalValue="1424.02"/>
+			<IfcPropertySingleValue Name="Top Offset" NominalValue="2800"/>
+			<IfcPropertySingleValue Name="Unconnected Height" NominalValue="1375.98"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1HF60vfbT8sRsema3cAlgV" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Rectangular Straight Wall Opening"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZE68" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUScgToZE9q" Name="Pset_WallCommon">
+			<IfcPropertySingleValue Name="Reference" NominalValue="Wall 200mm"/>
+			<IfcPropertySingleValue Name="LoadBearing" NominalValue="false"/>
+			<IfcPropertySingleValue Name="ExtendToStructure" NominalValue="true"/>
+			<IfcPropertySingleValue Name="IsExternal" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZEAl" Name="Constraints">
+			<IfcPropertySingleValue Name="Base Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Base Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Base is Attached" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Base Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Location Line" NominalValue="Wall Centerline"/>
+			<IfcPropertySingleValue Name="Related to Mass" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Room Bounding" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Top is Attached" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Unconnected Height" NominalValue="3500"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrXoZEAl" Name="Dimensions">
+			<IfcPropertySingleValue Name="Area" NominalValue="10.8802"/>
+			<IfcPropertySingleValue Name="Length" NominalValue="5200"/>
+			<IfcPropertySingleValue Name="Volume" NominalValue="2.17604"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1JMUZf1ffCPQMasitFI36O" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Walls"/>
+			<IfcPropertySingleValue Name="Family" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Family and Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type Id" NominalValue="Basic Wall: Wall 200mm"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZEAl" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrToZEAl" Name="Structural">
+			<IfcPropertySingleValue Name="Enable Analytical Model" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural Usage" NominalValue="Non-bearing"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZE4X" Name="Constraints">
+			<IfcPropertySingleValue Name="Base Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Top Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Base Offset" NominalValue="-91.5211"/>
+			<IfcPropertySingleValue Name="Top Offset" NominalValue="2520.11"/>
+			<IfcPropertySingleValue Name="Unconnected Height" NominalValue="2611.63"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1ioJG_fi54LOIX2EvmcpqH" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Rectangular Straight Wall Opening"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZE4X" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZE4F" Name="Constraints">
+			<IfcPropertySingleValue Name="Base Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Top Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Base Offset" NominalValue="-34.6753"/>
+			<IfcPropertySingleValue Name="Top Offset" NominalValue="2653.73"/>
+			<IfcPropertySingleValue Name="Unconnected Height" NominalValue="2688.41"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="0LH$cj51P4pBU_6QlBicqo" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Rectangular Straight Wall Opening"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZE4F" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUScgToZEAl" Name="Pset_WallCommon">
+			<IfcPropertySingleValue Name="Reference" NominalValue="Wall 200mm"/>
+			<IfcPropertySingleValue Name="LoadBearing" NominalValue="false"/>
+			<IfcPropertySingleValue Name="ExtendToStructure" NominalValue="true"/>
+			<IfcPropertySingleValue Name="IsExternal" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZEA7" Name="Constraints">
+			<IfcPropertySingleValue Name="Base Constraint" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Base Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Base is Attached" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Base Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Location Line" NominalValue="Wall Centerline"/>
+			<IfcPropertySingleValue Name="Related to Mass" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Room Bounding" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Extension Distance" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Top is Attached" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Top Offset" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Unconnected Height" NominalValue="3500"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrXoZEA7" Name="Dimensions">
+			<IfcPropertySingleValue Name="Area" NominalValue="5.39136"/>
+			<IfcPropertySingleValue Name="Length" NominalValue="1884.8"/>
+			<IfcPropertySingleValue Name="Volume" NominalValue="1.07827"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="0BNX5aZQvC1vid7Lj5ePhG" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Walls"/>
+			<IfcPropertySingleValue Name="Family" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Family and Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type" NominalValue="Basic Wall: Wall 200mm"/>
+			<IfcPropertySingleValue Name="Type Id" NominalValue="Basic Wall: Wall 200mm"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZEA7" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrToZEA7" Name="Structural">
+			<IfcPropertySingleValue Name="Enable Analytical Model" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Structural Usage" NominalValue="Non-bearing"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUScgToZEA7" Name="Pset_WallCommon">
+			<IfcPropertySingleValue Name="Reference" NominalValue="Wall 200mm"/>
+			<IfcPropertySingleValue Name="LoadBearing" NominalValue="false"/>
+			<IfcPropertySingleValue Name="ExtendToStructure" NominalValue="true"/>
+			<IfcPropertySingleValue Name="IsExternal" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUScg5oZE0$" Name="Pset_SlabCommon">
+			<IfcPropertySingleValue Name="Reference" NominalValue="Floor 1"/>
+			<IfcPropertySingleValue Name="IsExternal" NominalValue="false"/>
+			<IfcPropertySingleValue Name="LoadBearing" NominalValue="true"/>
+			<IfcPropertySingleValue Name="PitchAngle" NominalValue="0"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZE0$" Name="Constraints">
+			<IfcPropertySingleValue Name="Related to Mass" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Room Bounding" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Height Offset From Level" NominalValue="3500"/>
+			<IfcPropertySingleValue Name="Level" NominalValue="Level: Level 1"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrXoZE0$" Name="Dimensions">
+			<IfcPropertySingleValue Name="Area" NominalValue="29.16"/>
+			<IfcPropertySingleValue Name="Elevation at Bottom" NominalValue="3200"/>
+			<IfcPropertySingleValue Name="Elevation at Bottom Core" NominalValue="3200"/>
+			<IfcPropertySingleValue Name="Elevation at Top" NominalValue="3500"/>
+			<IfcPropertySingleValue Name="Elevation at Top Core" NominalValue="3500"/>
+			<IfcPropertySingleValue Name="Perimeter" NominalValue="21600"/>
+			<IfcPropertySingleValue Name="Thickness" NominalValue="300"/>
+			<IfcPropertySingleValue Name="Volume" NominalValue="8.748"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrjoZE0$" Name="Identity Data">
+			<IfcPropertySingleValue Name="precast" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="2Jv0VCnvTEuAprreRNGNRb" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Floors"/>
+			<IfcPropertySingleValue Name="Family" NominalValue="Floor: Floor 1"/>
+			<IfcPropertySingleValue Name="Family and Type" NominalValue="Floor: Floor 1"/>
+			<IfcPropertySingleValue Name="Type" NominalValue="Floor: Floor 1"/>
+			<IfcPropertySingleValue Name="Type Id" NominalValue="Floor: Floor 1"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZE0$" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrToZE0$" Name="Structural">
+			<IfcPropertySingleValue Name="Enable Analytical Model" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Rebar Cover - Bottom Face" NominalValue="Rebar Cover Settings: Rebar Cover 1"/>
+			<IfcPropertySingleValue Name="Rebar Cover - Other Faces" NominalValue="Rebar Cover Settings: Rebar Cover 1"/>
+			<IfcPropertySingleValue Name="Rebar Cover - Top Face" NominalValue="Rebar Cover Settings: Rebar Cover 1"/>
+			<IfcPropertySingleValue Name="Structural" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbmToZEw5" Name="Analytical Properties">
+			<IfcPropertySingleValue Name="Roughness" NominalValue="1"/>
+			<IfcPropertySingleValue Name="Absorptance" NominalValue="0.1"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrvoZEw5" Name="Construction">
+			<IfcPropertySingleValue Name="Default Thickness" NominalValue="300"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrzoZEw5" Name="Graphics">
+			<IfcPropertySingleValue Name="Coarse Scale Fill Color" NominalValue="0"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrjoZEw5" Name="Identity Data">
+			<IfcPropertySingleValue Name="Assembly Code" NominalValue=""/>
+			<IfcPropertySingleValue Name="Assembly Description" NominalValue=""/>
+			<IfcPropertySingleValue Name="Type Name" NominalValue="Floor 1"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1t2uOB11f4CBKbzBmd17vA" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Floors"/>
+			<IfcPropertySingleValue Name="Family Name" NominalValue="Floor"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUScg5oZE0J" Name="Pset_SlabCommon">
+			<IfcPropertySingleValue Name="Reference" NominalValue="Floor 1"/>
+			<IfcPropertySingleValue Name="IsExternal" NominalValue="false"/>
+			<IfcPropertySingleValue Name="LoadBearing" NominalValue="true"/>
+			<IfcPropertySingleValue Name="PitchAngle" NominalValue="0"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZE0J" Name="Constraints">
+			<IfcPropertySingleValue Name="Related to Mass" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Room Bounding" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Height Offset From Level" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Level" NominalValue="Level: Level 1"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrXoZE0J" Name="Dimensions">
+			<IfcPropertySingleValue Name="Area" NominalValue="86.86"/>
+			<IfcPropertySingleValue Name="Elevation at Bottom" NominalValue="-300"/>
+			<IfcPropertySingleValue Name="Elevation at Bottom Core" NominalValue="-300"/>
+			<IfcPropertySingleValue Name="Elevation at Top" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Elevation at Top Core" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Perimeter" NominalValue="37400"/>
+			<IfcPropertySingleValue Name="Thickness" NominalValue="300"/>
+			<IfcPropertySingleValue Name="Volume" NominalValue="26.058"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1CBTnpkbvDoQWs07ITE4Wb" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Floors"/>
+			<IfcPropertySingleValue Name="Family" NominalValue="Floor: Floor 1"/>
+			<IfcPropertySingleValue Name="Family and Type" NominalValue="Floor: Floor 1"/>
+			<IfcPropertySingleValue Name="Type" NominalValue="Floor: Floor 1"/>
+			<IfcPropertySingleValue Name="Type Id" NominalValue="Floor: Floor 1"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrLoZE0J" Name="Phasing">
+			<IfcPropertySingleValue Name="Phase Created" NominalValue="New Construction"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrToZE0J" Name="Structural">
+			<IfcPropertySingleValue Name="Enable Analytical Model" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Rebar Cover - Bottom Face" NominalValue="Rebar Cover Settings: Rebar Cover 1"/>
+			<IfcPropertySingleValue Name="Rebar Cover - Other Faces" NominalValue="Rebar Cover Settings: Rebar Cover 1"/>
+			<IfcPropertySingleValue Name="Rebar Cover - Top Face" NominalValue="Rebar Cover Settings: Rebar Cover 1"/>
+			<IfcPropertySingleValue Name="Structural" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrjoZE_d" Name="Identity Data">
+			<IfcPropertySingleValue Name="Building Name" NominalValue=""/>
+			<IfcPropertySingleValue Name="Organization Description" NominalValue=""/>
+			<IfcPropertySingleValue Name="Organization Name" NominalValue=""/>
+		</IfcPropertySet>
+		<IfcPropertySet id="0eBNZnYMvB8Qtva0lrrK3i" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Project Information"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSchPoZEwi" Name="Pset_BuildingStoreyCommon">
+			<IfcPropertySingleValue Name="AboveGround" NominalValue="false"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZEwi" Name="Constraints">
+			<IfcPropertySingleValue Name="Elevation" NominalValue="0"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrXoZEwi" Name="Dimensions">
+			<IfcPropertySingleValue Name="Computation Height" NominalValue="0"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrjoZEwi" Name="Identity Data">
+			<IfcPropertySingleValue Name="Structural" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Building Story" NominalValue="true"/>
+			<IfcPropertySingleValue Name="Name" NominalValue="Level 1"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="3BHNtEHVn7xRKVldQSlTYt" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Levels"/>
+			<IfcPropertySingleValue Name="Family" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Family and Type" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Type" NominalValue="Level: Level 1"/>
+			<IfcPropertySingleValue Name="Type Id" NominalValue="Level: Level 1"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbqvoZEws" Name="Constraints">
+			<IfcPropertySingleValue Name="Elevation Base" NominalValue="Project Base Point"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrzoZEws" Name="Graphics">
+			<IfcPropertySingleValue Name="Color" NominalValue="0"/>
+			<IfcPropertySingleValue Name="Line Pattern" NominalValue="Solid"/>
+			<IfcPropertySingleValue Name="Line Weight" NominalValue="1"/>
+			<IfcPropertySingleValue Name="Symbol at End 1 Default" NominalValue="false"/>
+			<IfcPropertySingleValue Name="Symbol at End 2 Default" NominalValue="true"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSbrjoZEws" Name="Identity Data">
+			<IfcPropertySingleValue Name="Type Name" NominalValue="Level 1"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1BA__XGXnAVxYFfW1XANFA" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Levels"/>
+			<IfcPropertySingleValue Name="Family Name" NominalValue="Level"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="1zsFittbH2hBUSch5oZE_d" Name="Pset_BuildingCommon">
+			<IfcPropertySingleValue Name="NumberOfStoreys" NominalValue="1"/>
+		</IfcPropertySet>
+		<IfcPropertySet id="3s$TQqxsHFCvdsUAmsSBYV" Name="Identity Data">
+			<IfcPropertySingleValue Name="Building Name" NominalValue=""/>
+			<IfcPropertySingleValue Name="Organization Description" NominalValue=""/>
+			<IfcPropertySingleValue Name="Organization Name" NominalValue=""/>
+		</IfcPropertySet>
+		<IfcPropertySet id="0hTVhOSuH6xADeEk9LVEcb" Name="Other">
+			<IfcPropertySingleValue Name="Category" NominalValue="Project Information"/>
+		</IfcPropertySet>
+	</properties>
+	<quantities/>
+	<types>
+		<IfcWallType id="1zsFittbH2hBUSaLfoZEwB" Name="Basic Wall:Wall 200mm" Tag="1523" PredefinedType="STANDARD">
+			<IfcPropertySet xlink:href="#1zsFittbH2hBUSbmToZEwB"/>
+			<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrvoZEwB"/>
+			<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrzoZEwB"/>
+			<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrjoZEwB"/>
+			<IfcPropertySet xlink:href="#3bSRf6hATFBfTLnT_9X54a"/>
+		</IfcWallType>
+	</types>
+	<layers>
+		<IfcPresentationLayerAssignment id="A-200-M_WALL_EXT" Name="A-200-M_WALL_EXT"/>
+		<IfcPresentationLayerAssignment id="A-230-M_FLOOR" Name="A-230-M_FLOOR"/>
+	</layers>
+	<materials>
+		<IfcMaterialLayerSetUsage id="IfcMaterialLayerSetUsage_199" LayerSetName="Basic Wall:Wall 200mm" LayerSetDirection="AXIS2" DirectionSense="NEGATIVE" OffsetFromReferenceLine="100">
+			<IfcMaterialLayer Name="Default Wall" LayerThickness="200"/>
+		</IfcMaterialLayerSetUsage>
+		<IfcMaterialLayerSet id="IfcMaterialLayerSet_196" LayerSetName="Basic Wall:Wall 200mm">
+			<IfcMaterialLayer Name="Default Wall" LayerThickness="200"/>
+		</IfcMaterialLayerSet>
+		<IfcMaterialLayerSetUsage id="IfcMaterialLayerSetUsage_375" LayerSetName="Basic Wall:Wall 200mm" LayerSetDirection="AXIS2" DirectionSense="NEGATIVE" OffsetFromReferenceLine="100">
+			<IfcMaterialLayer Name="Default Wall" LayerThickness="200"/>
+		</IfcMaterialLayerSetUsage>
+		<IfcMaterialLayerSetUsage id="IfcMaterialLayerSetUsage_486" LayerSetName="Basic Wall:Wall 200mm" LayerSetDirection="AXIS2" DirectionSense="NEGATIVE" OffsetFromReferenceLine="100">
+			<IfcMaterialLayer Name="Default Wall" LayerThickness="200"/>
+		</IfcMaterialLayerSetUsage>
+		<IfcMaterialLayerSetUsage id="IfcMaterialLayerSetUsage_598" LayerSetName="Basic Wall:Wall 200mm" LayerSetDirection="AXIS2" DirectionSense="NEGATIVE" OffsetFromReferenceLine="100">
+			<IfcMaterialLayer Name="Default Wall" LayerThickness="200"/>
+		</IfcMaterialLayerSetUsage>
+		<IfcMaterialLayerSetUsage id="IfcMaterialLayerSetUsage_755" LayerSetName="Basic Wall:Wall 200mm" LayerSetDirection="AXIS2" DirectionSense="NEGATIVE" OffsetFromReferenceLine="100">
+			<IfcMaterialLayer Name="Default Wall" LayerThickness="200"/>
+		</IfcMaterialLayerSetUsage>
+		<IfcMaterialLayerSetUsage id="IfcMaterialLayerSetUsage_872" LayerSetName="Basic Wall:Wall 200mm" LayerSetDirection="AXIS2" DirectionSense="NEGATIVE" OffsetFromReferenceLine="100">
+			<IfcMaterialLayer Name="Default Wall" LayerThickness="200"/>
+		</IfcMaterialLayerSetUsage>
+		<IfcMaterialLayerSetUsage id="IfcMaterialLayerSetUsage_932" LayerSetName="Floor:Floor 1" LayerSetDirection="AXIS3" DirectionSense="POSITIVE" OffsetFromReferenceLine="0">
+			<IfcMaterialLayer Name=" &lt;Unnamed&gt;" LayerThickness="300"/>
+		</IfcMaterialLayerSetUsage>
+		<IfcMaterialLayerSetUsage id="IfcMaterialLayerSetUsage_1026" LayerSetName="Floor:Floor 1" LayerSetDirection="AXIS3" DirectionSense="POSITIVE" OffsetFromReferenceLine="0">
+			<IfcMaterialLayer Name=" &lt;Unnamed&gt;" LayerThickness="300"/>
+		</IfcMaterialLayerSetUsage>
+	</materials>
+	<decomposition>
+		<IfcProject id="3U3xWssGvFQQ4jdihTtJmV" Name="" LongName="T:\_PMC\LB\GEB\BOUG\USER\veem5\Project1.ifc" Phase="">
+			<IfcSite id="3U3xWssGvFQQ4jdihTtJmT" Name="Default" ObjectType="" ObjectPlacement="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" CompositionType="ELEMENT" RefLatitude="42.414863586389" RefLongitude="-71.258071899167" RefElevation="0">
+				<IfcBuilding id="3U3xWssGvFQQ4jdihTtJmU" Name="" ObjectPlacement="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" LongName="" CompositionType="ELEMENT">
+					<IfcBuildingStorey id="3U3xWssGvFQQ4jdieY8iOx" Name="Level 1" ObjectPlacement="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" LongName="Level 1" CompositionType="ELEMENT" Elevation="0">
+						<IfcWallStandardCase id="1zsFittbH2hBUSaLfoZE9n" Name="Basic Wall:Wall 200mm:2313" ObjectType="Basic Wall:Wall 200mm:1523" ObjectPlacement="1 0 0 0 0 1 0 0 0 0 1 0 -259.873 -123.671 0 1" Tag="2313">
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZE9n"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrXoZE9n"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrjoZE9n"/>
+							<IfcPropertySet xlink:href="#1dfKwNk7j9GRk7c$9tGHIv"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZE9n"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrToZE9n"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUScgToZE9n"/>
+							<IfcWallType xlink:href="#1zsFittbH2hBUSaLfoZEwB"/>
+							<IfcPresentationLayerAssignment xlink:href="#A-200-M_WALL_EXT"/>
+							<IfcMaterialLayerSetUsage xlink:href="#IfcMaterialLayerSetUsage_199"/>
+						</IfcWallStandardCase>
+						<IfcWallStandardCase id="1zsFittbH2hBUSaLfoZE9o" Name="Basic Wall:Wall 200mm:2314" ObjectType="Basic Wall:Wall 200mm:1523" ObjectPlacement="0 -1 0 0 1 0 0 0 0 0 1 0 -159.873 5176.33 0 1" Tag="2314">
+							<IfcOpeningElement id="1zsFittbH2hBUSaLfoZE6e" Name="Basic Wall:Wall 200mm:2314" ObjectType="Opening" ObjectPlacement="0 -1 0 0 1 0 0 0 0 0 1 0 -159.873 5176.33 0 1">
+								<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZE6e"/>
+								<IfcPropertySet xlink:href="#2$7HMcoHf84vJa10ntBiVW"/>
+								<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZE6e"/>
+							</IfcOpeningElement>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZE9o"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrXoZE9o"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrjoZE9o"/>
+							<IfcPropertySet xlink:href="#0Zji5h_1H5O84MJZwjiOAu"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZE9o"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrToZE9o"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUScgToZE9o"/>
+							<IfcWallType xlink:href="#1zsFittbH2hBUSaLfoZEwB"/>
+							<IfcPresentationLayerAssignment xlink:href="#A-200-M_WALL_EXT"/>
+							<IfcMaterialLayerSetUsage xlink:href="#IfcMaterialLayerSetUsage_375"/>
+						</IfcWallStandardCase>
+						<IfcWallStandardCase id="1zsFittbH2hBUSaLfoZE9p" Name="Basic Wall:Wall 200mm:2315" ObjectType="Basic Wall:Wall 200mm:1523" ObjectPlacement="-1 0 0 0 0 -1 0 0 0 0 1 0 5140.13 5076.33 0 1" Tag="2315">
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZE9p"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrXoZE9p"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrjoZE9p"/>
+							<IfcPropertySet xlink:href="#3j4Z944cb6kBrRDi7TJ1EW"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZE9p"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrToZE9p"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUScgToZE9p"/>
+							<IfcWallType xlink:href="#1zsFittbH2hBUSaLfoZEwB"/>
+							<IfcPresentationLayerAssignment xlink:href="#A-200-M_WALL_EXT"/>
+							<IfcMaterialLayerSetUsage xlink:href="#IfcMaterialLayerSetUsage_486"/>
+						</IfcWallStandardCase>
+						<IfcWallStandardCase id="1zsFittbH2hBUSaLfoZE9q" Name="Basic Wall:Wall 200mm:2316" ObjectType="Basic Wall:Wall 200mm:1523" ObjectPlacement="0 1 0 0 -1 0 0 0 0 0 1 0 5040.13 -223.671 0 1" Tag="2316">
+							<IfcOpeningElement id="1zsFittbH2hBUSaLfoZE68" Name="Basic Wall:Wall 200mm:2316" ObjectType="Opening" ObjectPlacement="0 1 0 0 -1 0 0 0 0 0 1 0 5040.13 -223.671 0 1">
+								<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZE68"/>
+								<IfcPropertySet xlink:href="#1HF60vfbT8sRsema3cAlgV"/>
+								<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZE68"/>
+							</IfcOpeningElement>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZE9q"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrXoZE9q"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrjoZE9q"/>
+							<IfcPropertySet xlink:href="#1AyNzjzan32OfBxfzm01dy"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZE9q"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrToZE9q"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUScgToZE9q"/>
+							<IfcWallType xlink:href="#1zsFittbH2hBUSaLfoZEwB"/>
+							<IfcPresentationLayerAssignment xlink:href="#A-200-M_WALL_EXT"/>
+							<IfcMaterialLayerSetUsage xlink:href="#IfcMaterialLayerSetUsage_598"/>
+						</IfcWallStandardCase>
+						<IfcWallStandardCase id="1zsFittbH2hBUSaLfoZEAl" Name="Basic Wall:Wall 200mm:2519" ObjectType="Basic Wall:Wall 200mm:1523" ObjectPlacement="0 -1 0 0 1 0 0 0 0 0 1 0 1724.93 4976.33 0 1" Tag="2519">
+							<IfcOpeningElement id="1zsFittbH2hBUSaLfoZE4X" Name="Basic Wall:Wall 200mm:2519" ObjectType="Opening" ObjectPlacement="0 -1 0 0 1 0 0 0 0 0 1 0 1724.93 4976.33 0 1">
+								<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZE4X"/>
+								<IfcPropertySet xlink:href="#1ioJG_fi54LOIX2EvmcpqH"/>
+								<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZE4X"/>
+							</IfcOpeningElement>
+							<IfcOpeningElement id="1zsFittbH2hBUSaLfoZE4F" Name="Basic Wall:Wall 200mm:2519" ObjectType="Opening" ObjectPlacement="0 -1 0 0 1 0 0 0 0 0 1 0 1724.93 4976.33 0 1">
+								<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZE4F"/>
+								<IfcPropertySet xlink:href="#0LH$cj51P4pBU_6QlBicqo"/>
+								<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZE4F"/>
+							</IfcOpeningElement>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZEAl"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrXoZEAl"/>
+							<IfcPropertySet xlink:href="#1JMUZf1ffCPQMasitFI36O"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZEAl"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrToZEAl"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUScgToZEAl"/>
+							<IfcWallType xlink:href="#1zsFittbH2hBUSaLfoZEwB"/>
+							<IfcPresentationLayerAssignment xlink:href="#A-200-M_WALL_EXT"/>
+							<IfcMaterialLayerSetUsage xlink:href="#IfcMaterialLayerSetUsage_755"/>
+						</IfcWallStandardCase>
+						<IfcWallStandardCase id="1zsFittbH2hBUSaLfoZEA7" Name="Basic Wall:Wall 200mm:2559" ObjectType="Basic Wall:Wall 200mm:1523" ObjectPlacement="-1 0 0 0 0 -1 0 0 0 0 1 0 1624.93 1871.53 0 1" Tag="2559">
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZEA7"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrXoZEA7"/>
+							<IfcPropertySet xlink:href="#0BNX5aZQvC1vid7Lj5ePhG"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZEA7"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrToZEA7"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUScgToZEA7"/>
+							<IfcWallType xlink:href="#1zsFittbH2hBUSaLfoZEwB"/>
+							<IfcPresentationLayerAssignment xlink:href="#A-200-M_WALL_EXT"/>
+							<IfcMaterialLayerSetUsage xlink:href="#IfcMaterialLayerSetUsage_872"/>
+						</IfcWallStandardCase>
+						<IfcSlab id="1zsFittbH2hBUSaLfoZE0$" Name="Floor:Floor 1:2887" ObjectType="Floor:Floor 1" ObjectPlacement="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" Tag="2887" PredefinedType="FLOOR">
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUScg5oZE0$"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZE0$"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrXoZE0$"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrjoZE0$"/>
+							<IfcPropertySet xlink:href="#2Jv0VCnvTEuAprreRNGNRb"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZE0$"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrToZE0$"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbmToZEw5"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrvoZEw5"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrzoZEw5"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrjoZEw5"/>
+							<IfcPropertySet xlink:href="#1t2uOB11f4CBKbzBmd17vA"/>
+							<IfcPresentationLayerAssignment xlink:href="#A-230-M_FLOOR"/>
+							<IfcMaterialLayerSetUsage xlink:href="#IfcMaterialLayerSetUsage_932"/>
+						</IfcSlab>
+						<IfcSlab id="1zsFittbH2hBUSaLfoZE0J" Name="Floor:Floor 1:2923" ObjectType="Floor:Floor 1" ObjectPlacement="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" Tag="2923" PredefinedType="FLOOR">
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUScg5oZE0J"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZE0J"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrXoZE0J"/>
+							<IfcPropertySet xlink:href="#1CBTnpkbvDoQWs07ITE4Wb"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrLoZE0J"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrToZE0J"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbmToZEw5"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrvoZEw5"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrzoZEw5"/>
+							<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrjoZEw5"/>
+							<IfcPropertySet xlink:href="#1t2uOB11f4CBKbzBmd17vA"/>
+							<IfcPresentationLayerAssignment xlink:href="#A-230-M_FLOOR"/>
+							<IfcMaterialLayerSetUsage xlink:href="#IfcMaterialLayerSetUsage_1026"/>
+						</IfcSlab>
+						<IfcPropertySet xlink:href="#1zsFittbH2hBUSchPoZEwi"/>
+						<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZEwi"/>
+						<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrXoZEwi"/>
+						<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrjoZEwi"/>
+						<IfcPropertySet xlink:href="#3BHNtEHVn7xRKVldQSlTYt"/>
+						<IfcPropertySet xlink:href="#1zsFittbH2hBUSbqvoZEws"/>
+						<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrzoZEws"/>
+						<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrjoZEws"/>
+						<IfcPropertySet xlink:href="#1BA__XGXnAVxYFfW1XANFA"/>
+					</IfcBuildingStorey>
+					<IfcPropertySet xlink:href="#1zsFittbH2hBUSch5oZE_d"/>
+					<IfcPropertySet xlink:href="#3s$TQqxsHFCvdsUAmsSBYV"/>
+					<IfcPropertySet xlink:href="#0hTVhOSuH6xADeEk9LVEcb"/>
+				</IfcBuilding>
+				<IfcPropertySet xlink:href="#1zsFittbH2hBUSbrjoZE_d"/>
+				<IfcPropertySet xlink:href="#0eBNZnYMvB8Qtva0lrrK3i"/>
+			</IfcSite>
+		</IfcProject>
+	</decomposition>
+</ifc>

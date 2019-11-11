@@ -48,134 +48,143 @@
     $("#myButton").click(function () {
         inputGuid = showName();
         var myTest = guidArray.includes(inputGuid);
-        console.log("Is this GUID in the current model? " + myTest);
+        var arrayIndex = guidArray.indexOf(inputGuid);
+        console.log("Is this GUID in the current scene? " + myTest);
 
         if(myTest){
-            cameraFlight.flyTo(model.meshes[inputGuid]);
-            model.highlighted = false;
-            model.meshes[inputGuid].highlighted = true;
+            //Object.values(guidObjectArray[index])[2]
+            var targetModelIndex = guidObjectArray[arrayIndex].modelIndex;
+
+            //cameraFlight.flyTo(model.meshes[inputGuid]);
+            cameraFlight.flyTo(models.children[targetModelIndex].meshes[inputGuid]);
+            //model.highlighted = false;
+            models.children[targetModelIndex].highlighted = false;
+            //model.meshes[inputGuid].highlighted = true;
+            models.children[targetModelIndex].meshes[inputGuid].highlighted = true;
         }
     });
 
-    
-
     var guidArray = [];
-    /*
-    var model = new xeogl.GLTFModel({
-        id:"test",
-        src: "models/Hospital_FireAlarm.gltf",
-        scale: [1, 1, 1],
-        objectTree: true,
-        handleNode: (function() {
-            var objectCount = 0;
-            return function (nodeInfo, actions) {
-                if (nodeInfo.mesh !== undefined) { // Node has a mesh
-                    var myName = nodeInfo.name;
-                    guidArray.push(myName);
-                    actions.createObject = {
-                        id: myName,
-                        guid: myName
-                    };
-                }
-                return true;
-            };
-        })()
-    });
-    */
-    
-    
-    var structure = new xeogl.GLTFModel({
-        id: "structure",
-        loaded: true,
-        src: "models/Hospital_Structural.gltf",
-        lambertMaterials: true,
-        edgeThreshold: 3,
-        ghosted: true,
-        handleNode: (function() {
-            var objectCount = 0;
-            return function (nodeInfo, actions) {
-                if (nodeInfo.mesh !== undefined) { // Node has a mesh
-                    var myName = nodeInfo.name;
-                    guidArray.push(myName);
-                    actions.createObject = {
-                        id: myName,
-                        guid: myName
-                    };
-                }
-                return true;
-            };
-        })()
-    });
-    var sprinklers = new xeogl.GLTFModel({
-        id: "sprinklers",
-        loaded: false,
-        src: "models/Hospital_Sprinkle.gltf",
-        lambertMaterials: true,
-        ghosted: false,
-        selected: false,
-        highlighted: false,
-        handleNode: (function() {
-            var objectCount = 0;
-            return function (nodeInfo, actions) {
-                if (nodeInfo.mesh !== undefined) { // Node has a mesh
-                    var myName = nodeInfo.name;
-                    guidArray.push(myName);
-                    actions.createObject = {
-                        id: myName,
-                        guid: myName
-                    };
-                }
-                return true;
-            };
-        })()
-    });
-    var fireAlarms = new xeogl.GLTFModel({
-        id: "fireAlarms",
-        loaded: false,
-        src: "models/Hospital_FireAlarm.gltf",
-        lambertMaterials: true,
-        ghosted: false,
-        selected: false,
-        highlighted: false,
-        handleNode: (function() {
-            var objectCount = 0;
-            return function (nodeInfo, actions) {
-                if (nodeInfo.mesh !== undefined) { // Node has a mesh
-                    var myName = nodeInfo.name;
-                    guidArray.push(myName);
-                    actions.createObject = {
-                        id: myName,
-                        guid: myName
-                    };
-                }
-                return true;
-            };
-        })()
-    });
-    var electrical = new xeogl.GLTFModel({
-        id: "electrical",
-        loaded: false,
-        src: "models/Hospital_Electrical.gltf",
-        lambertMaterials: true,
-        ghosted: false,
-        highlighted: false,
-        handleNode: (function() {
-            var objectCount = 0;
-            return function (nodeInfo, actions) {
-                if (nodeInfo.mesh !== undefined) { // Node has a mesh
-                    var myName = nodeInfo.name;
-                    guidArray.push(myName);
-                    actions.createObject = {
-                        id: myName,
-                        guid: myName
-                    };
-                }
-                return true;
-            };
-        })()
-    });
+    var guidObjectArray = [];
+    function GuidObject(modelIndex, modelId, guid){
+        this.modelIndex = modelIndex;
+        this.modelId = modelId;
+        this.guid = guid
+    }
 
-    var scene = structure.scene;
+    var models = new xeogl.Group({
+        rotation:[0,0,0],
+        position:[0,0,0],
+        scale:[1,1,1],
+        children:[
+            new xeogl.GLTFModel({
+                id: "structure",
+                loaded: true,
+                src: "models/Hospital_Structural.gltf",
+                lambertMaterials: true,
+                edgeThreshold: 3,
+                ghosted: true,
+                handleNode: (function() {
+                    return function (nodeInfo, actions) {
+                        if (nodeInfo.mesh !== undefined) { // Node has a mesh
+                            var myName = nodeInfo.name;
+
+                            guidArray.push(myName);
+
+                            var tempObj = new GuidObject(0, "structure", myName);
+                            guidObjectArray.push(tempObj);
+
+                            actions.createObject = {
+                                id: myName,
+                                guid: myName
+                            };
+                        }
+                        return true;
+                    };
+                })()
+            }),
+            new xeogl.GLTFModel({
+                id: "sprinklers",
+                loaded: false,
+                src: "models/Hospital_Sprinkle.gltf",
+                lambertMaterials: true,
+                ghosted: false,
+                selected: false,
+                highlighted: false,
+                handleNode: (function() {
+                    return function (nodeInfo, actions) {
+                        if (nodeInfo.mesh !== undefined) { // Node has a mesh
+                            var myName = nodeInfo.name;
+                            guidArray.push(myName);
+
+                            var tempObj = new GuidObject(1, "sprinklers", myName);
+                            guidObjectArray.push(tempObj);
+
+                            actions.createObject = {
+                                id: myName,
+                                guid: myName
+                            };
+                        }
+                        return true;
+                    };
+                })()
+            }),
+            new xeogl.GLTFModel({
+                id: "fireAlarms",
+                loaded: false,
+                src: "models/Hospital_FireAlarm.gltf",
+                lambertMaterials: true,
+                ghosted: false,
+                selected: false,
+                highlighted: false,
+                handleNode: (function() {
+                    return function (nodeInfo, actions) {
+                        if (nodeInfo.mesh !== undefined) { // Node has a mesh
+                            var myName = nodeInfo.name;
+                            guidArray.push(myName);
+
+                            var tempObj = new GuidObject(2, "fireAlarms", myName);
+                            guidObjectArray.push(tempObj);
+
+                            actions.createObject = {
+                                id: myName,
+                                guid: myName
+                            };
+                        }
+                        return true;
+                    };
+                })()
+            }),
+            new xeogl.GLTFModel({
+                id: "electrical",
+                loaded: false,
+                src: "models/Hospital_Electrical.gltf",
+                lambertMaterials: true,
+                ghosted: false,
+                highlighted: false,
+                handleNode: (function() {
+                    return function (nodeInfo, actions) {
+                        if (nodeInfo.mesh !== undefined) { // Node has a mesh
+                            var myName = nodeInfo.name;
+                            guidArray.push(myName);
+
+                            var tempObj = new GuidObject(3, "electrical", myName);
+                            guidObjectArray.push(tempObj);
+
+                            actions.createObject = {
+                                id: myName,
+                                guid: myName
+                            };
+                        }
+                        return true;
+                    };
+                })()
+            })
+        ]
+    })
+
+    //var scene = structure.scene;
+    var scene = models.children[0].scene;
     var camera = scene.camera;
     var input = scene.input;
     scene.ghostMaterial.preset = "defaultDarkBG";
@@ -187,7 +196,7 @@
     camera.look = [8.71, 142.89, -73.77];
     camera.up = [-0.38, 0.86, 0.30];
     var cameraControl = new xeogl.CameraControl({
-        //panToPointer: true,
+        panToPointer: true,
         //pivoting: true
     });
 
@@ -214,6 +223,7 @@
     
     cameraControl.on("pickedNothing", function (hit) {
         cameraFlight.flyTo(structure);
+        models.highlighted = false;
     });
 
     var culling = false;
@@ -247,43 +257,16 @@
     
     var clips = scene.clips;
     clips.clips = [
-    new xeogl.Clip({  // Clip plane on negative diagonal
-        id: 0,
-        pos: [0, 0, 0],
-        dir: [1.0, 0, 0],
-        autoPlaneSize: true,
-        active: true,
-        solid: true,
-        visible: true
-    }),
-
-    ];
-    /*
-    var clips = scene.clips;
-    clips.clips = [
-        new xeogl.Clip({
-            id: "clip0",
-            pos: [100, 235, -174],
-            dir: [-1, -1, -1],
+        new xeogl.Clip({  // Clip plane on negative diagonal
+            id: 0,
+            pos: [0, 0, 0],
+            dir: [1.0, 0, 0],
+            autoPlaneSize: true,
             active: true,
             solid: true,
             visible: true
-        })
-    ]
-    
-    for (var id in scene.clips) {
-        if (scene.clips.hasOwnProperty(id)) {
-            var clip = scene.clips[id];
-            new xeogl.ClipHelper({
-                clip: clip,
-                planeSize: [100, 100],
-                autoPlaneSize: true,
-                visible: true,
-                solid: true // Filled planes
-            });
-        }
-    }
-    */
+        }),
+    ];
     var gui = new dat.GUI({autoPlace: false, top: 0, right: 10, width: 350});
     document.getElementById('dat-gui-container').appendChild(gui.domElement);
     var modelIds = Object.keys(scene.models);
@@ -293,13 +276,11 @@
     }
 
     var Menu = function () {
+        // var this = {};
         
-        //var clippingPlane = scene.clips.clips["0"];
-        
-        this.pos = 0.0;
-        
-        this.message = "Models";
+        //this.message = "Models";
 
+        // create propertise in a object
         for (var i = 0; i < modelIds.length; i++) {
             var modelId = modelIds[i];
             var model = scene.models[modelId];
@@ -339,11 +320,12 @@
             }
             scene.clips.clips["0"].pos[0] = guiControl.xPos;
             
-            requestAnimationFrame(update);
         };
+        requestAnimationFrame(update);
         update();
+        // return this;
     };
-    var menu = new Menu();
+    var menu = new Menu(); // function is called in CONSTRUCTOR mode!
     for (var i = 0; i < modelIds.length; i++) {
         var modelId = modelIds[i];
         var model = scene.models[modelId];
