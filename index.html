@@ -14,6 +14,7 @@
     <script src="js/helpers/planeHelper.js"></script>
     <script src="js/helpers/clipHelper.js"></script>
     <script src="js/geometry/vectorTextGeometry.js"></script>
+    <script src="js/helpers/axisHelper.js"></script>
 
     <link href="css/styles.css" rel="stylesheet"/>
 </head>
@@ -41,9 +42,9 @@
     function showName() {                
         var myName = $("#myInput").val();                
         console.log(myName);
-
         return myName;
     }
+
     var inputGuid;
     $("#myButton").click(function () {
         inputGuid = showName();
@@ -183,7 +184,20 @@
         ]
     })
 
-    //var scene = structure.scene;
+    var outerSphere = new xeogl.Mesh({
+        geometry: new xeogl.SphereGeometry({
+            radius: 1,
+            heightSegments: 60,
+            widthSegments: 60
+        }),
+        material: new xeogl.PhongMaterial({
+            ambient: [0.9, 0.3, 0.9],
+            shininess: 30
+            }),
+            Xbackfaces: true
+    }) 
+
+
     var scene = models.children[0].scene;
     var camera = scene.camera;
     var input = scene.input;
@@ -192,21 +206,25 @@
     scene.ghostMaterial.edgeAlpha = 0.3;
     scene.ghostMaterial.fillAlpha = 0.3;
 
+    
     camera.eye = [133.72, 235.56, -174.37];
     camera.look = [8.71, 142.89, -73.77];
     camera.up = [-0.38, 0.86, 0.30];
+
     var cameraControl = new xeogl.CameraControl({
         panToPointer: true,
         //pivoting: true
     });
-
     var cameraFlight = new xeogl.CameraFlightAnimation();
+
     cameraControl.on("hoverEnter", function (hit) {
         hit.mesh.highlighted = true;
+        hit.mesh.aabbVisible = true;
     });
     
     cameraControl.on("hoverOut", function (hit) {
         hit.mesh.highlighted = false;
+        hit.mesh.aabbVisible = false;
     });
     
     cameraControl.on("picked", function (hit) {
@@ -216,69 +234,47 @@
             mesh.highlighted = !mesh.selected;
         } else {
             cameraFlight.flyTo(mesh);
+            console.log(mesh.aabb)
+            if(clippingSwitch){
+                guiClippingController.xPosition = mesh.aabb[0]
+                guiClippingController.yPosition = mesh.aabb[1]
+            }
         }
         console.log(mesh.guid);
     });
 
-    
     cameraControl.on("pickedNothing", function (hit) {
-        cameraFlight.flyTo(structure);
+        cameraFlight.flyTo(scene.models['structure']);
         models.highlighted = false;
     });
 
-    var culling = false;
-    var timeout;
-    var culled = false;
-
-    camera.on("viewMatrix", function () {
-        if (!culling) {
-            return;
-        }
-        if (!culled) {
-            sprinklers.culled = true;
-            electrical.culled = true;
-            plumbing.culled = true;
-            fireAlarms.culled = true;
-            culled = true;
-        }
-        if (timeout) {
-            clearTimeout(timeout);
-            timeout = null;
-        }
-        timeout = setTimeout(function () {
-            sprinklers.culled = false;
-            electrical.culled = false;
-            plumbing.culled = false;
-            fireAlarms.culled = false;
-            culled = false;
-            timeout = null;
-        }, 100);
-    });
-    
+    var clippingSwitch = false;
     var clips = scene.clips;
     clips.clips = [
         new xeogl.Clip({  // Clip plane on negative diagonal
-            id: 0,
+            id: "clip0",
             pos: [0, 0, 0],
-            dir: [1.0, 0, 0],
-            autoPlaneSize: true,
-            active: true,
-            solid: true,
-            visible: true
+            dir: [1.0, 0, 0]
+            //autoPlaneSize: false,
+            //active: true,
+            //solid: true,
+            //visible: true
         }),
     ];
-    var gui = new dat.GUI({autoPlace: false, top: 0, right: 10, width: 350});
+    
+    var gui = new dat.GUI({autoPlace: false, top: 0, right: 100, width: 350});
     document.getElementById('dat-gui-container').appendChild(gui.domElement);
     var modelIds = Object.keys(scene.models);
 
-    var guiControl = new function(){
-        this.xPos = 0;
+    var guiClippingController = new function(){
+        this.xPosition = 0;
+        this.yPosition = 0;
     }
 
     var Menu = function () {
         // var this = {};
-        
-        //this.message = "Models";
+        var self = this;
+        self["clippingSwitch"] = clippingSwitch;
 
         // create propertise in a object
         for (var i = 0; i < modelIds.length; i++) {
@@ -291,7 +287,8 @@
             this[modelId + ".selected"] = model.selected;
             this[modelId + ".highlighted"] = model.highlighted;
         }
-        var self = this;
+
+        
         var update = function () {
             for (var i = 0; i < modelIds.length; i++) {
                 var modelId = modelIds[i];
@@ -316,15 +313,18 @@
                 if (model.highlighted !== highlighted) {
                     model.highlighted = highlighted;
                 }
-                
             }
-            scene.clips.clips["0"].pos[0] = guiControl.xPos;
-            
+
+            clippingSwitch = self["clippingSwitch"];
+
+            scene.clips.clips["0"].pos[0] = guiClippingController.xPosition;
+            scene.clips.clips["0"].pos[1] = guiClippingController.yPosition;
+            requestAnimationFrame(update);
         };
-        requestAnimationFrame(update);
         update();
         // return this;
     };
+
     var menu = new Menu(); // function is called in CONSTRUCTOR mode!
     for (var i = 0; i < modelIds.length; i++) {
         var modelId = modelIds[i];
@@ -337,12 +337,29 @@
         folder.add(menu, modelId + ".highlighted", model.highlighted);
         folder.open();
     }
-    
+
     var clipFolder = gui.addFolder("clipFolder")
-    clipFolder.add(guiControl, "xPos", 0, 100);
-    folder.open();
+    clipFolder.add(menu, "clippingSwitch", clippingSwitch);
+
+    function Modelaabb(scene){
+        this.xmin = scene.models["structure"].aabb[0];
+        this.xmax = scene.models["structure"].aabb[3];
+    }
+
+
+    //var xmin = parseInt(scene.models["structure"].aabb[0]);
+    //var xmax = parseInt(scene.models["structure"].aabb[3]);
+
+    clipFolder.add(guiClippingController, "xPosition", new Modelaabb(scene).xmin, new Modelaabb(scene).xmax).listen();
+    clipFolder.add(guiClippingController, "yPosition", -100, 100).listen();
+    clipFolder.open();
     
-    
+    new xeogl.AxisHelper({
+        camera: scene.camera,
+        size: [150, 150],
+        visible: true
+    });
+
 </script>
 </body>
 </html>
