@@ -31,25 +31,37 @@
     </ul>
 </div>
 -->
-<form class = "desk">
-    GUID:  <input id="myInput" type="text" name="guid">   <button id = "myButton" type='button'> Submit </button>
+<form class = "desk" id="singleForm">
+    Single-GUID:  <input id="singleInput" type="text" name="single"><button id = "singleButton" type='button'> Submit </button>
+</form>
+<form class = "desk" id="arrayForm">
+    Array- GUID:   <input id="arrayInput" type="text" name="array"><button id = "arrayButton" type='button'> Submit </button>
 </form>
 
 <div id="dat-gui-container"></div>
 
 <script>
-
-    function showName() {                
-        var myName = $("#myInput").val();                
-        console.log(myName);
-        return myName;
+    //Array-Guid <input id="arrayInput" type="text" name="arrayInput">   <button id = "arrayButton" type="button"> Submit </button>
+    function singleGUID() {                
+        var myGuid = $("#singleInput").val();                
+        console.log(myGuid);
+        return myGuid;
+    }
+    function arrayGUID() {                
+        var myGuids = $("#arrayInput").val();      
+        var arrayGuids = myGuids.split(' ');          
+        console.log(arrayGuids);
+        return arrayGuids;
     }
 
-    var inputGuid;
-    $("#myButton").click(function () {
-        inputGuid = showName();
-        var myTest = guidArray.includes(inputGuid);
-        var arrayIndex = guidArray.indexOf(inputGuid);
+    
+
+    var guid;
+    $("#singleButton").click(function () {
+        models.highlighted = false;
+        guid = singleGUID();
+        var myTest = guidArray.includes(guid);
+        var arrayIndex = guidArray.indexOf(guid);
         console.log("Is this GUID in the current scene? " + myTest);
 
         if(myTest){
@@ -57,16 +69,50 @@
             var targetModelIndex = guidObjectArray[arrayIndex].modelIndex;
 
             //cameraFlight.flyTo(model.meshes[inputGuid]);
-            cameraFlight.flyTo(models.children[targetModelIndex].meshes[inputGuid]);
+            cameraFlight.flyTo(models.children[targetModelIndex].meshes[guid]);
             //model.highlighted = false;
             models.children[targetModelIndex].highlighted = false;
             //model.meshes[inputGuid].highlighted = true;
-            models.children[targetModelIndex].meshes[inputGuid].highlighted = true;
+            models.children[targetModelIndex].meshes[guid].highlighted = true;
         }
+        $('#singleForm')[0].reset();
     });
+
+    var guids;
+    $("#arrayButton").click(function () {
+        guids = arrayGUID();
+        models.highlighted = false;
+        
+        for (var i = 0; i < guids.length; i++){
+            var myTest = guidArray.includes(guids[i]);
+            var arrayIndex = guidArray.indexOf(guids[i]);
+            console.log("Is this GUID in the current scene? " + myTest);
+
+            if(myTest){
+                //Object.values(guidObjectArray[index])[2]
+                var targetModelIndex = guidObjectArray[arrayIndex].modelIndex;
+
+                //cameraFlight.flyTo(model.meshes[inputGuid]);
+                //cameraFlight.flyTo(models.children[targetModelIndex].meshes[guids[i]]);
+                //model.highlighted = false;
+                //models.children[targetModelIndex].highlighted = false;
+                //model.meshes[inputGuid].highlighted = true;
+                models.children[targetModelIndex].meshes[guids[i]].highlighted = true;
+            }
+        }
+        
+        $('#arrayForm')[0].reset();
+    });   
+        
 
     var guidArray = [];
     var guidObjectArray = [];
+
+    var guidStructureObjects  = [];
+    var guidSprinklersObjects = [];
+    var guidFireAlarmsObjects = [];
+    var guidElectricalObjects = [];
+
     function GuidObject(modelIndex, modelId, guid){
         this.modelIndex = modelIndex;
         this.modelId = modelId;
@@ -88,8 +134,9 @@
                 handleNode: (function() {
                     return function (nodeInfo, actions) {
                         if (nodeInfo.mesh !== undefined) { // Node has a mesh
-                            var myName = nodeInfo.name;
+                            var target = "structure"
 
+                            var myName = nodeInfo.name;
                             guidArray.push(myName);
 
                             var tempObj = new GuidObject(0, "structure", myName);
@@ -115,6 +162,8 @@
                 handleNode: (function() {
                     return function (nodeInfo, actions) {
                         if (nodeInfo.mesh !== undefined) { // Node has a mesh
+                            var target = "sprinklers"
+
                             var myName = nodeInfo.name;
                             guidArray.push(myName);
 
@@ -183,7 +232,7 @@
             })
         ]
     })
-
+    /*
     var outerSphere = new xeogl.Mesh({
         geometry: new xeogl.SphereGeometry({
             radius: 1,
@@ -196,7 +245,7 @@
             }),
             Xbackfaces: true
     }) 
-
+    */
 
     var scene = models.children[0].scene;
     var camera = scene.camera;
@@ -206,7 +255,10 @@
     scene.ghostMaterial.edgeAlpha = 0.3;
     scene.ghostMaterial.fillAlpha = 0.3;
 
-    
+    var hit = scene.pick({
+        pickSurface: true,
+        //canvasPos: [23, 131]
+    });
     camera.eye = [133.72, 235.56, -174.37];
     camera.look = [8.71, 142.89, -73.77];
     camera.up = [-0.38, 0.86, 0.30];
@@ -233,14 +285,14 @@
             mesh.selected = !mesh.selected;
             mesh.highlighted = !mesh.selected;
         } else {
+            var normal = hit.normal;
             cameraFlight.flyTo(mesh);
-            console.log(mesh.aabb)
+            console.log(normal);
             if(clippingSwitch){
                 guiClippingController.xPosition = mesh.aabb[0]
                 guiClippingController.yPosition = mesh.aabb[1]
             }
         }
-        console.log(mesh.guid);
     });
 
     cameraControl.on("pickedNothing", function (hit) {
@@ -254,11 +306,11 @@
         new xeogl.Clip({  // Clip plane on negative diagonal
             id: "clip0",
             pos: [0, 0, 0],
-            dir: [1.0, 0, 0]
-            //autoPlaneSize: false,
-            //active: true,
-            //solid: true,
-            //visible: true
+            dir: [1.0, 0, 0],
+            autoPlaneSize: true,
+            active: true,
+            solid: true,
+            visible: true
         }),
     ];
     
@@ -316,9 +368,17 @@
             }
 
             clippingSwitch = self["clippingSwitch"];
-
-            scene.clips.clips["0"].pos[0] = guiClippingController.xPosition;
-            scene.clips.clips["0"].pos[1] = guiClippingController.yPosition;
+            if(scene.clips.clips[0].pos[0] !== guiClippingController.xPosition){
+                scene.clips.clips[0].pos[0] = guiClippingController.xPosition;
+                //scene.clips.clip[0].dir[0] = 1;
+                //scene.clips.clip[0].dir[1] = 0;
+            }
+            if(scene.clips.clips[0].pos[1] !== guiClippingController.yPosition){
+                scene.clips.clips[0].pos[1] = guiClippingController.yPosition;
+                //scene.clips.clip[0].dir[0] = 0;
+                //scene.clips.clip[0].dir[1] = 1;
+            }
+            
             requestAnimationFrame(update);
         };
         update();
@@ -350,7 +410,8 @@
     //var xmin = parseInt(scene.models["structure"].aabb[0]);
     //var xmax = parseInt(scene.models["structure"].aabb[3]);
 
-    clipFolder.add(guiClippingController, "xPosition", new Modelaabb(scene).xmin, new Modelaabb(scene).xmax).listen();
+    //clipFolder.add(guiClippingController, "xPosition", new Modelaabb(scene).xmin, new Modelaabb(scene).xmax).listen();
+    clipFolder.add(guiClippingController, "xPosition", -100, 100).listen();
     clipFolder.add(guiClippingController, "yPosition", -100, 100).listen();
     clipFolder.open();
     
