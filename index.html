@@ -290,7 +290,7 @@
             console.log(normal);
             if(local){
                 guiClippingController.xPosition = mesh.aabb[0]
-                guiClippingController.yPosition = mesh.aabb[1]
+                guiClippingController.zPosition = mesh.aabb[1]
             }
         }
     });
@@ -320,7 +320,7 @@
 
     var guiClippingController = new function(){
         this.xPosition = 0;
-        this.yPosition = 0;
+        this.zPosition = 0;
     }
 
     var Menu = function () {
@@ -396,18 +396,18 @@
 
                 ghostMaterial.vertexSize = guiClippingController.xPosition/1000;
 
-                scene.clips.clips[0].dir[0] = 1;
-                scene.clips.clips[0].dir[1] = 0;
-                scene.clips.clips[0].dir[2] = 0;
+                scene.clips.clips[0].dir[0] = 1.0;
+                scene.clips.clips[0].dir[1] = 0.0;
+                scene.clips.clips[0].dir[2] = 0.0;
             }
-            if(scene.clips.clips[0].pos[2] !== guiClippingController.yPosition){
-                scene.clips.clips[0].pos[2] = guiClippingController.yPosition;
+            if(scene.clips.clips[0].pos[2] !== guiClippingController.zPosition){
+                scene.clips.clips[0].pos[2] = guiClippingController.zPosition;
 
-                ghostMaterial.edgeAlpha = guiClippingController.yPosition/1000;
+                ghostMaterial.edgeAlpha = guiClippingController.zPosition/1000;
 
-                scene.clips.clips[0].dir[0] = 0;
-                scene.clips.clips[0].dir[1] = 0;
-                scene.clips.clips[0].dir[2] = 1;
+                scene.clips.clips[0].dir[0] = 0.0;
+                scene.clips.clips[0].dir[1] = 0.0;
+                scene.clips.clips[0].dir[2] = 1.0;
             }
             
             requestAnimationFrame(update);
@@ -447,7 +447,7 @@
 
     //clipFolder.add(guiClippingController, "xPosition", new Modelaabb(scene).xmin, new Modelaabb(scene).xmax).listen();
     clipFolder.add(guiClippingController, "xPosition", -100, 100).listen();
-    clipFolder.add(guiClippingController, "yPosition", -300, 300).listen();
+    clipFolder.add(guiClippingController, "zPosition", -300, 300).listen();
     clipFolder.open();
     
     new xeogl.AxisHelper({
